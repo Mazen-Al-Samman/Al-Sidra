@@ -24,7 +24,7 @@ class LoginForm extends Model
     {
         return [
             // username and password are both required
-            [['username', 'password'], 'required'],
+            [['username', 'password'], 'required', 'message' => "لا يمكن ترك {attribute} فارغًا"],
             // rememberMe must be a boolean value
             ['rememberMe', 'boolean'],
             // password is validated by validatePassword()
@@ -59,8 +59,16 @@ class LoginForm extends Model
         if ($this->validate()) {
             return Yii::$app->user->login($this->getUser(), $this->rememberMe ? 3600 * 24 * 30 : 0);
         }
-        
+
         return false;
+    }
+
+    public function attributeLabels()
+    {
+        return [
+            'username' => 'اسم المستخدم',
+            'password' => 'كلمة السر'
+        ];
     }
 
     /**
