@@ -5,11 +5,7 @@
 /** @var string $content */
 
 use backend\assets\AppAsset;
-use common\widgets\Alert;
-use yii\bootstrap4\Breadcrumbs;
 use yii\bootstrap4\Html;
-use yii\bootstrap4\Nav;
-use yii\bootstrap4\NavBar;
 use yii\web\View;
 
 AppAsset::register($this);
@@ -32,6 +28,7 @@ AppAsset::register($this);
     <?php $this->beginBody() ?>
     <?php if (Yii::$app->controller->action->id != 'login') echo $this->render('header') ?>
     <?= $content ?>
+    <?php if (Yii::$app->controller->action->id != 'login') echo $this->render('footer') ?>
     <?php $this->endBody() ?>
     </body>
     </html>

@@ -9,24 +9,33 @@ use yii\web\AssetBundle;
  */
 class AppAsset extends AssetBundle
 {
-// <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico"/>
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
         'css/main.css',
         'css/site.css',
         'css/plugins.css',
+        'css/loader.css',
         'bootstrap/css/bootstrap.min.css',
         'css/authentication/form-2.css',
         'css/forms/theme-checkbox-radio.css',
         'css/forms/switches.css',
-        'img/favicon.ico',
+        'plugins/apex/apexcharts.css',
+        'plugins/perfect-scrollbar/perfect-scrollbar.css',
+        'css/dashboard/dash_2.css',
     ];
     public $js = [
+        'js/app.js',
+        'js/main.js',
         'js/libs/jquery-3.1.1.min.js',
+        'js/loader.js',
         'bootstrap/js/popper.min.js',
         'bootstrap/js/bootstrap.min.js',
-        'js/authentication/form-1.js',
+        'js/authentication/form-2.js',
+        'js/custom.js',
+        'plugins/apex/apexcharts.min.js',
+        'plugins/perfect-scrollbar/perfect-scrollbar.min.js',
+        'js/dashboard/dash_2.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',

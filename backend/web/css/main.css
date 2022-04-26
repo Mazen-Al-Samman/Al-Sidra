@@ -2628,3 +2628,15 @@ table .badge-success, table .badge-primary, table .badge-warning, table .badge-d
 .position-relative {
     position: relative;
 }
+
+.feather {
+    transform: rotateY(180deg);
+}
+
+.margin-right-auto {
+    margin-right: auto !important;
+}
+
+.page-header {
+    margin-top: -4px !important;
+}

@@ -19,7 +19,7 @@ $this->title = 'تسجيل الدخول';
             <div class="form-container">
                 <div class="form-content">
                     <h1 class="text-center">تسجيل الدخول</h1>
-                    <p class="text-center">يرجى تسجيل الدخول للمتــابعة</p>
+                    <p class="text-center">يرجى تسجيل الدخول للمتابعة</p>
 
                     <?php $form = ActiveForm::begin(['id' => 'login-form', 'class' => 'text-left']); ?>
                     <div class="form">
