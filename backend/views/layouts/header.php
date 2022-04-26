@@ -24,7 +24,7 @@ $translations = [
                 </a>
             </li>
             <li class="nav-item theme-text">
-                <a href="<?= Url::to(['site/index']) ?>" class="nav-link"> السـيــدرا العقـاريـة </a>
+                <a href="<?= Url::to(['site/index']) ?>" class="nav-link"> السـدرة العقـاريـة </a>
             </li>
         </ul>
 
