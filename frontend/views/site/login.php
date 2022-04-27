@@ -1,41 +1,26 @@
 <?php
+/** @var $model LoginForm */
 
-/** @var yii\web\View $this */
-/** @var yii\bootstrap4\ActiveForm $form */
-/** @var \common\models\LoginForm $model */
-
-use yii\bootstrap4\Html;
+use common\models\LoginForm;
 use yii\bootstrap4\ActiveForm;
+use yii\helpers\Html;
 
-$this->title = 'Login';
-$this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="site-login">
-    <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>Please fill out the following fields to login:</p>
-
-    <div class="row">
-        <div class="col-lg-5">
+<div class="container content-center">
+    <div class="row w-100 rounded content-center text-center">
+        <div class="col-6 bg-light p-5 rounded">
             <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
+            <?= $form->field($model, 'username')->textInput() ?>
+            <br>
+            <?= $form->field($model, 'password')->passwordInput() ?>
 
-                <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
-
-                <?= $form->field($model, 'password')->passwordInput() ?>
-
-                <?= $form->field($model, 'rememberMe')->checkbox() ?>
-
-                <div style="color:#999;margin:1em 0">
-                    If you forgot your password you can <?= Html::a('reset it', ['site/request-password-reset']) ?>.
-                    <br>
-                    Need new verification email? <?= Html::a('Resend', ['site/resend-verification-email']) ?>
-                </div>
-
-                <div class="form-group">
-                    <?= Html::submitButton('Login', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
-                </div>
-
+            <div class="form-group">
+                <?= Html::submitButton('تسجيل الدخول', ['class' => 'btn main-bg pt-1 mt-4 font-weight-bold', 'name' => 'login-button']) ?>
+            </div>
             <?php ActiveForm::end(); ?>
+
+            <p class="font-15 font-weight-bold mt-2">مستخدم جديد؟ يمكنك إنشاء حساب من <a href="#">هنا</a></p>
         </div>
     </div>
 </div>

@@ -1,4 +1,4 @@
-main > .container {
+main > .container-sidra {
     padding: 70px 15px 20px;
 }
 
@@ -8,7 +8,7 @@ main > .container {
     height: 60px;
 }
 
-.footer > .container {
+.footer > .container-sidra {
     padding-right: 15px;
     padding-left: 15px;
 }
@@ -70,9 +70,9 @@ a.desc:after {
     color: rgba(255, 255, 255, 0.5);
 }
 
-@media(max-width:767px) {
+@media (max-width: 767px) {
     .nav li > form > button.logout {
-        display:block;
+        display: block;
         text-align: left;
         width: 100%;
         padding: 10px 0;
@@ -87,4 +87,36 @@ a.desc:after {
 
 .nav > li > form > button.logout:focus {
     outline: none;
+}
+
+.main-text {
+    color: #064221;
+}
+
+.main-bg {
+    background-color: #064221;
+    color: whitesmoke;
+    font-weight: bold;
+}
+
+.main-bg:hover {
+    color: whitesmoke;
+    background-color: #064239;
+}
+
+.clear {
+    margin: 100px !important;
+}
+
+.content-center {
+    display: flex;
+    justify-content: center;
+}
+
+.form-group label {
+    margin-bottom: 20px;
+}
+
+.font-15 {
+    font-size: 15px;
 }

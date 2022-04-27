@@ -13,8 +13,12 @@ class AppAsset extends AssetBundle
     public $baseUrl = '@web';
     public $css = [
         'css/site.css',
+        'css/normalize.css',
+        'css/webflow.css',
+        'css/alsidra.css',
     ];
     public $js = [
+        'js/webflow.js'
     ];
     public $depends = [
         'yii\web\YiiAsset',

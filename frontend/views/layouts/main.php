@@ -1,83 +1,36 @@
 <?php
 
-/** @var \yii\web\View $this */
+/** @var View $this */
+
 /** @var string $content */
 
-use common\widgets\Alert;
 use frontend\assets\AppAsset;
-use yii\bootstrap4\Breadcrumbs;
 use yii\bootstrap4\Html;
-use yii\bootstrap4\Nav;
-use yii\bootstrap4\NavBar;
+use yii\web\View;
 
 AppAsset::register($this);
+$this->registerCssFile("https://fonts.gstatic.com", ['position' => View::POS_HEAD]);
+$this->registerCssFile("https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700&display=swap", ['position' => View::POS_HEAD]);
+$this->registerJsFile('https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js', ['position' => View::POS_HEAD]);
+$this->registerJs('!function(o,c){var n=c.documentElement,t=" w-mod-";n.className+=t+"js",("ontouchstart"in o||o.DocumentTouch&&c instanceof DocumentTouch)&&(n.className+=t+"touch")}(window,document);');
+$this->registerJsFile('https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=623c47907413d05dab48f209', ['position' => View::POS_END]);
+$this->registerJsFile('https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js', ['position' => View::POS_END]);
 ?>
 <?php $this->beginPage() ?>
-<!DOCTYPE html>
-<html lang="<?= Yii::$app->language ?>" class="h-100">
-<head>
-    <meta charset="<?= Yii::$app->charset ?>">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <?php $this->registerCsrfMetaTags() ?>
-    <title><?= Html::encode($this->title) ?></title>
-    <?php $this->head() ?>
-</head>
-<body class="d-flex flex-column h-100">
-<?php $this->beginBody() ?>
-
-<header>
-    <?php
-    NavBar::begin([
-        'brandLabel' => Yii::$app->name,
-        'brandUrl' => Yii::$app->homeUrl,
-        'options' => [
-            'class' => 'navbar navbar-expand-md navbar-dark bg-dark fixed-top',
-        ],
-    ]);
-    $menuItems = [
-        ['label' => 'Home', 'url' => ['/site/index']],
-        ['label' => 'About', 'url' => ['/site/about']],
-        ['label' => 'Contact', 'url' => ['/site/contact']],
-    ];
-    if (Yii::$app->user->isGuest) {
-        $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
-        $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
-    } else {
-        $menuItems[] = '<li>'
-            . Html::beginForm(['/site/logout'], 'post', ['class' => 'form-inline'])
-            . Html::submitButton(
-                'Logout (' . Yii::$app->user->identity->username . ')',
-                ['class' => 'btn btn-link logout']
-            )
-            . Html::endForm()
-            . '</li>';
-    }
-    echo Nav::widget([
-        'options' => ['class' => 'navbar-nav ml-auto'],
-        'items' => $menuItems,
-    ]);
-    NavBar::end();
-    ?>
-</header>
-
-<main role="main" class="flex-shrink-0">
-    <div class="container">
-        <?= Breadcrumbs::widget([
-            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-        ]) ?>
-        <?= Alert::widget() ?>
-        <?= $content ?>
-    </div>
-</main>
-
-<footer class="footer mt-auto py-3 text-muted">
-    <div class="container">
-        <p class="float-left">&copy; <?= Html::encode(Yii::$app->name) ?> <?= date('Y') ?></p>
-        <p class="float-right"><?= Yii::powered() ?></p>
-    </div>
-</footer>
-
-<?php $this->endBody() ?>
-</body>
-</html>
+    <!DOCTYPE html>
+    <html lang="<?= Yii::$app->language ?>" class="h-100">
+    <head>
+        <meta charset="<?= Yii::$app->charset ?>">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <?php $this->registerCsrfMetaTags() ?>
+        <title><?= Html::encode($this->title) ?></title>
+        <?php $this->head() ?>
+    </head>
+    <body class="body-4" style="font-family: 'Cairo', serif; font-weight: bold">
+    <?php $this->beginBody() ?>
+    <?= $this->render('header') ?>
+    <?= $content ?>
+    <?php $this->endBody() ?>
+    </body>
+    </html>
 <?php $this->endPage();
