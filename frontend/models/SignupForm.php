@@ -14,6 +14,7 @@ class SignupForm extends Model
     public $username;
     public $email;
     public $password;
+    public $phone;
 
 
     /**
@@ -23,18 +24,25 @@ class SignupForm extends Model
     {
         return [
             ['username', 'trim'],
-            ['username', 'required'],
-            ['username', 'unique', 'targetClass' => '\common\models\User', 'message' => 'This username has already been taken.'],
-            ['username', 'string', 'min' => 2, 'max' => 255],
+            [['username', 'password', 'email'], 'required', 'message' => "لا يمكن ترك {attribute} فارغًا"],
+            ['username', 'string', 'min' => 2, 'max' => 255,
+                'message' => '{attribute} يجب أن يتكون نصّـًًا',
+                'tooShort' => '2 يجب أن يكون عدد حروف {attribute} على الأقل',
+                'tooLong' => '255 يجب أن يكون عدد حروف {attribute} كحد أعلى ',
+            ],
 
             ['email', 'trim'],
-            ['email', 'required'],
             ['email', 'email'],
-            ['email', 'string', 'max' => 255],
-            ['email', 'unique', 'targetClass' => '\common\models\User', 'message' => 'This email address has already been taken.'],
+            ['email', 'string', 'max' => 255,
+                'message' => '{attribute} يجب أن يتكون نصّـًًا',
+                'tooLong' => '255 يجب أن يكون عدد حروف {attribute} كحد أعلى ',
+            ],
+            ['email', 'unique', 'targetClass' => '\common\models\User', 'message' => "{attribute} محجوز من مستخدم اخر"],
 
-            ['password', 'required'],
-            ['password', 'string', 'min' => Yii::$app->params['user.passwordMinLength']],
+            ['password', 'string', 'min' => Yii::$app->params['user.passwordMinLength'],
+                'message' => '{attribute} يجب أن يتكون نصّـًًا',
+                'tooShort' => Yii::$app->params['user.passwordMinLength'] . ' يجب أن يكون عدد حروف {attribute} على الأقل',
+            ],
         ];
     }
 
@@ -48,7 +56,7 @@ class SignupForm extends Model
         if (!$this->validate()) {
             return null;
         }
-        
+
         $user = new User();
         $user->username = $this->username;
         $user->email = $this->email;
@@ -57,6 +65,16 @@ class SignupForm extends Model
         $user->generateEmailVerificationToken();
 
         return $user->save() && $this->sendEmail($user);
+    }
+
+    public function attributeLabels()
+    {
+        return [
+            'username' => 'اسم المستخدم',
+            'email' => 'البريد الإلكتروني',
+            'password' => 'كلمة السر',
+            'phone' => 'رقــم الهاتف',
+        ];
     }
 
     /**

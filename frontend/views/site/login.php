@@ -9,7 +9,7 @@ use yii\helpers\Html;
 
 <div class="container content-center">
     <div class="row w-100 rounded content-center text-center">
-        <div class="col-6 bg-light p-5 rounded">
+        <div class="col-8 bg-light p-5 rounded">
             <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
             <?= $form->field($model, 'username')->textInput() ?>
             <br>
