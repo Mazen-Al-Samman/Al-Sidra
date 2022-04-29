@@ -66,7 +66,6 @@ if (Yii::$app->user->isGuest) {
             'guest' => true
         ]]);
 }
-
 ?>
 <!-- Main Nav With Logo -->
 <div class="container-fluid d-block mb-5">

@@ -30,6 +30,7 @@ $this->registerJsFile('https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2
     <?php $this->beginBody() ?>
     <?= $this->render('header') ?>
     <?= $content ?>
+    <?= !in_array(Yii::$app->controller->action->id, ['login', 'signup']) ? $this->render('footer') : '' ?>
     <?php $this->endBody() ?>
     </body>
     </html>
