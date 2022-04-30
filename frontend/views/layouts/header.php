@@ -30,7 +30,7 @@ $navBarItems = [
         'label' => 'طلب عقــار',
         'key' => 'real-estate-request',
         'items' => [],
-        'url' => Url::to(['site/index']),
+        'url' => Url::to(['real-estate/request']),
         'guest' => false
     ],
     [

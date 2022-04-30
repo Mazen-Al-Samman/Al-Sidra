@@ -32,7 +32,7 @@ class SignupForm extends Model
             ],
 
             ['email', 'trim'],
-            ['email', 'email'],
+            ['email', 'email', 'message' => 'يجب إدخال {attribute} صالـح!'],
             ['email', 'string', 'max' => 255,
                 'message' => '{attribute} يجب أن يتكون نصّـًًا',
                 'tooLong' => '255 يجب أن يكون عدد حروف {attribute} كحد أعلى ',

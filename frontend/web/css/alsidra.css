@@ -764,16 +764,15 @@
     margin-left: -449px;
     padding-top: 39px;
     border-radius: 0px;
-    background-color: #eee;
-    background-image: url('../img/تصميم-بدون-عنوان-10.png');
-    background-position: 50% 100%;
+    background-color: #FAFAFA;
+    background-image: url(../img/services-section.png);
+    background-position: 50% 15%;
     background-size: cover;
     background-repeat: repeat-y;
     background-attachment: fixed;
     opacity: 1;
     color: #1b524d;
     background-clip: padding-box;
-    -webkit-text-fill-color: inherit;
 }
 
 .container-3 {

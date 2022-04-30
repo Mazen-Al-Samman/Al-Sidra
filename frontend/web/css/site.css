@@ -156,3 +156,43 @@ a.desc:after {
 #services div:hover {
     transform: scale(1.03);
 }
+
+/*.with-background {*/
+/*    background-image: url(../img/services-section.png);*/
+/*    background-attachment: fixed;*/
+/*    background-size: contain;*/
+/*}*/
+
+.with-background:after {
+    content: "";
+    background-image: url(../img/services-section.png);
+    background-attachment: fixed;
+    background-size: contain;
+    opacity: 0.8;
+    filter: blur(5px);
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;
+}
+
+.real-estate-request {
+    width: 100%;
+    height: 550px;
+    font-weight: bold;
+}
+
+.help-block {
+    margin-top: 3px;
+    color: red;
+}
+
+.font-25 {
+    font-size: 25px;
+}
+
+.sweet-alert button {
+    font-family: 'Cairo', serif;
+}
