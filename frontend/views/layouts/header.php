@@ -15,14 +15,22 @@ $navBarItems = [
     [
         'label' => 'الــخــدمـــــات',
         'key' => 'site-services',
-        'items' => ["التقييم العقاري", "التسويق العقاري", "إدارة أملاك عقارية"],
+        'items' => [
+            ['label' => "التقييم العقاري", 'url' => Url::to(['real-estate/rate'])],
+            ['label' => "التسويق العقاري", 'url' => Url::to(['real-estate/marketing'])],
+            ['label' => "إدارة أملاك عقارية", 'url' => Url::to(['real-estate/rate'])],
+        ],
         'url' => Url::to(['site/index']),
         'guest' => true
     ],
     [
         'label' => 'عقـــارات',
         'key' => 'real-estate-types',
-        'items' => ["أرض", "مزرعة", "محل"],
+        'items' => [
+            ['label' => "أرض", 'url' => Url::to(['real-estate/rate'])],
+            ['label' => "مزرعة", 'url' => Url::to(['real-estate/rate'])],
+            ['label' => "محل", 'url' => Url::to(['real-estate/rate'])],
+        ],
         'url' => Url::to(['site/index']),
         'guest' => true
     ],
@@ -100,7 +108,7 @@ if (Yii::$app->user->isGuest) {
                         </div>
                         <nav class="w-dropdown-list">
                             <?php foreach ($navBarItem['items'] as $item) : ?>
-                                <a href="#" class="dropdown-link w-dropdown-link"><?= $item ?></a>
+                                <a href="<?= $item['url'] ?>" class="dropdown-link w-dropdown-link text-dark"><?= $item['label'] ?></a>
                             <?php endforeach; ?>
                         </nav>
                     </div>
