@@ -6,32 +6,36 @@ use yii\base\Model;
 
 class RealEstate extends Model
 {
-    public $name;
-    public $email;
+    public $contractType;
+    public $realEstateType;
+    public $address;
+    public $city;
+    public $neighborhood;
+    public $street;
+    public $numOfInterfaces;
+    public $numOfStreets;
+    public $price;
+    public $area;
     public $phone;
-    public $message;
-
-    public function rules()
-    {
-        return [
-            [['name', 'email', 'message', 'phone'], 'trim'],
-            [['name', 'email', 'message', 'phone'], 'required', 'message' => 'لا يمكن ترك حقل {attribute} فارغًـا'],
-            ['name', 'string', 'min' => 2,
-                'message' => '{attribute} يجب أن يكون نصّـًا',
-                'tooShort' => 'يجب أن يحتوي {attribute} على حرفين كـ حد أدنى'
-            ],
-            ['email', 'email', 'message' => 'يجب إدخال {attribute} بشكل صحيح!'],
-//            ['phone', 'validatePhone'],
-        ];
-    }
+    public $name;
+    public $notes;
 
     public function attributeLabels()
     {
         return [
-            'name' => 'الاســم',
-            'email' => 'البريــد الإلكتـروني',
-            'phone' => 'رقـم الهاتــف',
-            'message' => 'نص الرســالة'
+            'contractType' => 'نوع العقــد',
+            'realEstateType' => 'نوع العقــار',
+            'address' => 'العنـوان',
+            'city' => 'المديـنــة',
+            'neighborhood' => 'الحــي',
+            'street' => 'الشــارع',
+            'numOfInterfaces' => 'عدد الواجهـــات',
+            'numOfStreets' => 'عدد الشــوارع',
+            'price' => 'السعــر بالريال الســعودي',
+            'area' => 'المســاحة بالمتر',
+            'phone' => 'رقــم الهاتــف',
+            'name' => 'اســم صاحـب العقــار',
+            'notes' => 'ملاحظـــات',
         ];
     }
 }

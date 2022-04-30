@@ -18,7 +18,8 @@ class AppAsset extends AssetBundle
         'css/alsidra.css',
     ];
     public $js = [
-        'js/webflow.js'
+        'js/webflow.js',
+        'js/main.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',

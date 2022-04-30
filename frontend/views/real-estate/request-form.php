@@ -1,34 +1,16 @@
 <?php
-/** @var $model RealEstate */
+/** @var $model RealEstateRequest */
 
-use aryelds\sweetalert\SweetAlert;
-use frontend\models\RealEstate;
+use frontend\models\RealEstateRequest;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
-if (!empty(Yii::$app->session->allFlashes)) :
-    $flashes = Yii::$app->session->allFlashes;
-    foreach ($flashes as $type => $msg) :
-        echo SweetAlert::widget([
-            'options' => [
-                'title' => '',
-                'text' => "<span class='font-cairo font-25 font-weight-bold'>{$msg}</span>",
-                'type' => $type,
-                'html' => true,
-                'showConfirmButton' => true,
-                'confirmButtonColor' => '#064221',
-                'confirmButtonText' => 'مـوافق',
-                'closeOnConfirm' => true
-            ]
-        ]);
-    endforeach;
-endif;
 ?>
 
 <div class="container-fluid">
     <div class="row content-center">
         <div class="col-10 real-estate-request with-background text-center p-3" dir="rtl">
-            <h1 class="font-weight-bold mb-5">التــواصـل المبــاشـــر</h1>
+            <h1 class="section-heading centered font-din">التــواصـل المبــاشـــر</h1>
             <?php $form = ActiveForm::begin(['method' => 'POST']) ?>
 
             <div class="row content-center color-sky">
@@ -51,7 +33,7 @@ endif;
                 </div>
             </div>
 
-            <?= Html::submitButton('أرســل', ['class' => 'btn main-bg mt-3']) ?>
+            <?= Html::submitButton('أرســل', ['class' => 'btn bg-dark-blue w-10 text-light font-weight-bold mt-3']) ?>
 
             <?php ActiveForm::end(); ?>
         </div>

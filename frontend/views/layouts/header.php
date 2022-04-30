@@ -37,12 +37,12 @@ $navBarItems = [
         'label' => 'إضـافـة عقــار',
         'key' => 'real-estate-add',
         'items' => [],
-        'url' => Url::to(['site/index']),
+        'url' => Url::to(['real-estate/add']),
         'guest' => false
     ],
     [
         'label' => 'تـواصل معنــا',
-        'key' => 'real-estate-add',
+        'key' => 'contact-us',
         'items' => [],
         'url' => Url::to(['site/index']),
         'guest' => true
