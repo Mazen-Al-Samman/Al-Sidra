@@ -2,12 +2,18 @@
 
 namespace backend\controllers;
 
+use common\helpers\Utilities;
+use common\models\Landing;
 use common\models\LoginForm;
 use Yii;
+use yii\base\Exception;
+use yii\data\ActiveDataProvider;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
+use yii\helpers\Json;
 use yii\web\Controller;
 use yii\web\Response;
+use yii\web\UploadedFile;
 
 /**
  * Site controller
@@ -56,5 +62,27 @@ class SiteController extends AccessController
     {
         Yii::$app->user->logout();
         return $this->goHome();
+    }
+
+    public function actionLandingPages() {
+        $dataProvider = new ActiveDataProvider([
+           'query' => Landing::find(),
+        ]);
+        return $this->render('landing-config', ['dataProvider' => $dataProvider]);
+    }
+
+    /**
+     * @throws Exception
+     */
+    public function actionCreateLanding() {
+        $model = new Landing();
+
+        if (Yii::$app->request->isPost && $model->load(Yii::$app->request->post())) {
+            $img = Utilities::uploadImage(UploadedFile::getInstance($model, 'img'));
+            $model->img = $img;
+            if (!$model->save()) Yii::$app->session->setFlash('error', Json::encode($model->getFirstErrors()));
+            return $this->redirect(['site/landing-pages']);
+        }
+        return $this->renderAjax('_landing-form', ['model' => $model]);
     }
 }

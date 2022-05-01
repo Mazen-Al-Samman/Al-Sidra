@@ -18,17 +18,17 @@ AppAsset::register($this);
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <?php
         $this->registerCsrfMetaTags();
-        $this->registerCssFile("https://fonts.gstatic.com", ['position' => View::POS_HEAD]);
         $this->registerCssFile("https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700&display=swap", ['position' => View::POS_HEAD]);
         ?>
-        <title><?= Html::encode($this->title) ?></title>
-        <?php $this->head() ?>
+        <main role="main" class="flex-shrink-0">
+            <title><?= Html::encode($this->title) ?></title>
+            <?php $this->head() ?>
+        </main>
     </head>
-    <body>
+    <body class="d-flex flex-column h-100">
     <?php $this->beginBody() ?>
     <?php if (Yii::$app->controller->action->id != 'login') echo $this->render('header') ?>
     <?= $content ?>
-    <?php if (Yii::$app->controller->action->id != 'login') echo $this->render('footer') ?>
     <?php $this->endBody() ?>
     </body>
     </html>

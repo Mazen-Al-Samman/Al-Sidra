@@ -200,6 +200,10 @@ a.desc:after {
     background-color: #0b0b45;
 }
 
+.text-dark-blue {
+    color: #0b0b45;;
+}
+
 .w-10 {
     width: 10%;
 }

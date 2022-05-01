@@ -229,7 +229,6 @@ var App = function() {
             // _mobileResolution.onResize();
 
             sidebarFunctionality();
-            inBuiltfunctionality.mainCatActivateScroll();
             inBuiltfunctionality.preventScrollBody();
             inBuiltfunctionality.functionalDropdown();
         }

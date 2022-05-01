@@ -2640,3 +2640,11 @@ table .badge-success, table .badge-primary, table .badge-warning, table .badge-d
 .page-header {
     margin-top: -4px !important;
 }
+
+#modalContent > .widget-content-area {
+    padding: 0 !important;
+}
+
+.summary {
+    display: none;
+}
