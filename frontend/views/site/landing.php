@@ -1,22 +1,38 @@
+<?php
+/** @var $model Landing */
+
+use common\models\Landing;
+
+$callingMethods = ['هـاتـف'];
+$phoneUrl = "phone:";
+if ($model->has_whatsapp) {
+    $callingMethods[] = 'واتســاب';
+    $phoneUrl = "https://iwtsp.com/";
+}
+$methodsString = implode(' أو ', $callingMethods);
+
+$phoneUrl .= $model->phone;
+?>
 <div class="container">
     <div class="row content-center">
         <div class="col-12 text-center">
-            <img src="<?= Yii::getAlias('@img') . '/landing-img-1.png' ?>" class="img-fluid" alt="Image">
+            <img src="<?= $model->getImagePath() ?>" class="img-fluid" width="150" alt="<?= $model->main_text ?>">
         </div>
-        <div class="col-6 text-center">
-            <h3 class="font-weight-bold text-dark-blue">إدارة أملاك عقارية</h3>
-            <p>تقديم خدمات متميزة ومتنوعة لإدارة الأملاك والعقارات وذلك بحسب متطلبات العملاء وفقاً لخطط واستراتيجيات
-                تلبي التطورات المستقبلية</p>
+        <div class="col-6 text-center mt-3">
+            <h3 class="font-weight-bold text-dark-blue"><?= $model->main_text ?></h3>
+            <p><?= $model->body ?></p>
 
-            <div class="rounded text-center p-3 mt-3 bg-light">
-                <h1 class="font-din">هــاتــف أو واتســاب</h1>
+            <div class="rounded text-center pt-2 pb-4 mt-3 bg-light">
+                <h1 class="font-din"><?= $methodsString ?></h1>
                 <div>
-                    <img src="https://img.icons8.com/color/48/000000/whatsapp--v1.png" alt="whatsapp"/>
-                    <span class="text-success">&</span>
+                    <?php if ($model->has_whatsapp) : ?>
+                        <img src="https://img.icons8.com/color/48/000000/whatsapp--v1.png" alt="whatsapp"/>
+                        <span class="text-success">&</span>
+                    <?php endif; ?>
                     <img src="https://img.icons8.com/dotty/48/26e07f/callback.png" alt="Call"/>
                 </div>
-                <a href="https://iwtsp.com/966505931313" class="font-15 mt-3 mb-2 d-block"
-                   target="_blank">+966-505931313</a>
+                <a href="<?= $phoneUrl ?>" class="font-15 mt-3 mb-2 d-block"
+                   target="_blank"><?= $model->phone ?></a>
             </div>
         </div>
     </div>

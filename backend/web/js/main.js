@@ -10,3 +10,11 @@ $('[data-modal]').on('click', function () {
         .find('#modalContent')
         .load($(this).attr('value'));
 });
+
+$('[data-role="delete"]').on('click', function () {
+    let url = $(this).data('url');
+    $.ajax({
+        'url': url,
+        'type': 'POST',
+    });
+});

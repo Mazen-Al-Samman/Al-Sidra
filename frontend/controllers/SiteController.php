@@ -2,6 +2,7 @@
 
 namespace frontend\controllers;
 
+use common\models\Landing;
 use frontend\models\ResendVerificationEmailForm;
 use frontend\models\VerifyEmailForm;
 use Yii;
@@ -15,6 +16,7 @@ use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
+use yii\web\NotFoundHttpException;
 
 /**
  * Site controller
@@ -78,8 +80,12 @@ class SiteController extends Controller
         return $this->render('index');
     }
 
-    public function actionLanding() {
-        return $this->render('landing');
+    /**
+     * @throws NotFoundHttpException
+     */
+    public function actionLanding($slug) {
+        $landingModel = Landing::getBySlug($slug);
+        return $this->render('landing', ['model' => $landingModel]);
     }
 
     /**

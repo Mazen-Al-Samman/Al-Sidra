@@ -3,6 +3,7 @@
 namespace common\models;
 
 use Yii;
+use yii\web\NotFoundHttpException;
 
 /**
  * This is the model class for table "landing".
@@ -57,5 +58,14 @@ class Landing extends \yii\db\ActiveRecord
             'phone' => 'رقـم الهاتـف',
             'has_whatsapp' => 'هل الهاتـف مرتبـط بـ واتـسـاب؟',
         ];
+    }
+
+    /**
+     * @throws NotFoundHttpException
+     */
+    public static function getBySlug($slug) {
+        $model = self::find()->where(['slug' => $slug])->one();
+        if (empty($model)) throw new NotFoundHttpException("Can't find page");
+        return $model;
     }
 }

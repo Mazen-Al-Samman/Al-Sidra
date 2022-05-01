@@ -10,4 +10,8 @@ class Constant
         self::STATUS_ACTIVE => 'فعـّـــال',
         self::STATUS_DISABLE => 'غير فعـّـــال',
     ];
+    const YES_NO = [
+        self::STATUS_ACTIVE => 'نــعـم',
+        self::STATUS_DISABLE => 'لا',
+    ];
 }

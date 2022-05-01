@@ -3,6 +3,7 @@
 namespace backend\controllers;
 
 use yii\filters\AccessControl;
+use yii\filters\VerbFilter;
 use yii\web\Controller;
 
 class AccessController extends Controller
@@ -23,6 +24,12 @@ class AccessController extends Controller
                     ],
                 ],
             ],
+            'verbs' => [
+                'class' => VerbFilter::class,
+                'actions' => [
+                    'delete-landing' => ['post']
+                ]
+            ]
         ];
     }
 }

@@ -8,10 +8,8 @@ use common\models\LoginForm;
 use Yii;
 use yii\base\Exception;
 use yii\data\ActiveDataProvider;
-use yii\filters\VerbFilter;
-use yii\filters\AccessControl;
 use yii\helpers\Json;
-use yii\web\Controller;
+use yii\web\NotFoundHttpException;
 use yii\web\Response;
 use yii\web\UploadedFile;
 
@@ -84,5 +82,29 @@ class SiteController extends AccessController
             return $this->redirect(['site/landing-pages']);
         }
         return $this->renderAjax('_landing-form', ['model' => $model]);
+    }
+
+    /**
+     * @throws Exception
+     */
+    public function actionEditLanding($slug) {
+        $model = Landing::getBySlug($slug);
+
+        if (Yii::$app->request->isPost && $model->load(Yii::$app->request->post())) {
+            $img = Utilities::uploadImage(UploadedFile::getInstance($model, 'img'));
+            $model->img = empty($img) ? $model->getOldAttribute('img') : $img;
+            if (!$model->save()) Yii::$app->session->setFlash('error', Json::encode($model->getFirstErrors()));
+            return $this->redirect(['site/landing-pages']);
+        }
+        return $this->renderAjax('_landing-form', ['model' => $model]);
+    }
+
+    /**
+     * @throws NotFoundHttpException
+     */
+    public function actionDeleteLanding($slug) {
+        $model = Landing::getBySlug($slug);
+        Landing::deleteAll(['id' => $model->id]);
+        return $this->redirect(['site/landing-pages']);
     }
 }

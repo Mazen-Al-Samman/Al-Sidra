@@ -9,6 +9,8 @@ use yii\helpers\Html;
 <div class="widget-content widget-content-area text-left">
     <?php $form = ActiveForm::begin(['method' => 'POST']) ?>
     <div class="main-data">
+        <p class="alert alert-primary font-weight-bold text-center">لتحصل على أعلى دقـة ممكنة, قم بإضـافة صورة بدون
+            خلفيـة وذات دقـة عاليـة</p>
         <div class="row">
             <div class="col-lg-6">
                 <?= $form->field($model, 'slug')->textInput() ?>
@@ -32,7 +34,7 @@ use yii\helpers\Html;
     </div>
     <hr>
     <div class="d-flex justify-content-center">
-        <?= Html::submitButton('إضــافــة', ['class' => 'btn btn-dark btn-lg font-weight-bold mt-2 mb-3 w-100']) ?>
+        <?= Html::submitButton('حفــظ', ['class' => 'btn btn-dark btn-lg font-weight-bold w-100']) ?>
     </div>
     <?php ActiveForm::end() ?>
 </div>
