@@ -105,6 +105,7 @@ class SiteController extends AccessController
     public function actionDeleteLanding($slug) {
         $model = Landing::getBySlug($slug);
         Landing::deleteAll(['id' => $model->id]);
-        return $this->redirect(['site/landing-pages']);
+        Landing::purgeLandings();
+        return true;
     }
 }

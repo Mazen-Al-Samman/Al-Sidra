@@ -1,8 +1,10 @@
 <?php
 
+use common\models\Landing;
 use yii\helpers\Html;
 use yii\helpers\Url;
 
+$landingPages = Landing::getAll(false);
 $currentKey = Yii::$app->controller->id . "-" . Yii::$app->controller->action->id;
 $navBarItems = [
     [
@@ -15,11 +17,10 @@ $navBarItems = [
     [
         'label' => 'الــخــدمـــــات',
         'key' => 'site-services',
-        'items' => [
+        'items' => array_merge([
             ['label' => "التقييم العقاري", 'url' => Url::to(['real-estate/rate'])],
             ['label' => "التسويق العقاري", 'url' => Url::to(['real-estate/marketing'])],
-            ['label' => "إدارة أملاك عقارية", 'url' => Url::to(['real-estate/rate'])],
-        ],
+        ], $landingPages),
         'url' => Url::to(['site/index']),
         'guest' => true
     ],
@@ -108,7 +109,8 @@ if (Yii::$app->user->isGuest) {
                         </div>
                         <nav class="w-dropdown-list">
                             <?php foreach ($navBarItem['items'] as $item) : ?>
-                                <a href="<?= $item['url'] ?>" class="dropdown-link w-dropdown-link text-dark"><?= $item['label'] ?></a>
+                                <a href="<?= $item['url'] ?>"
+                                   class="dropdown-link w-dropdown-link text-dark"><?= $item['label'] ?></a>
                             <?php endforeach; ?>
                         </nav>
                     </div>

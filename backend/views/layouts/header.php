@@ -2,8 +2,10 @@
 
 use yii\helpers\Url;
 
+$currentBreadcrumbKey = Yii::$app->controller->id . "-" . Yii::$app->controller->action->id;
 $translations = [
-    'site' => 'الرئيسية'
+    'site-index' => 'الرئيسية',
+    'site-landing-pages' => 'الصفحات الثابتة'
 ];
 
 ?>
@@ -83,7 +85,8 @@ $translations = [
                     <nav class="breadcrumb-one" aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item active" aria-current="page">
-                                <span><?= $translations[Yii::$app->controller->id] ?></span></li>
+                                <span><?= !empty($translations[$currentBreadcrumbKey]) ? $translations[$currentBreadcrumbKey] : '' ?></span>
+                            </li>
                             <li class="breadcrumb-item"><a href="javascript:void(0);">لوحة التحكم</a></li>
                         </ol>
                     </nav>
@@ -105,11 +108,20 @@ $translations = [
                 <li class="menu">
                     <a href="#dashboard" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                         <div class="">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                 stroke-linejoin="round" class="feather feather-home">
+                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                            </svg>
                             <span>إعدادات الموقع</span>
                         </div>
                         <div>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                 stroke-linejoin="round" class="feather feather-chevron-right">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
                         </div>
                     </a>
                     <ul class="collapse submenu list-unstyled" id="dashboard" data-parent="#accordionExample">
