@@ -5,6 +5,9 @@ namespace backend\controllers;
 use common\helpers\Utilities;
 use common\models\Landing;
 use common\models\LoginForm;
+use common\models\RealEstateItem;
+use common\models\RealEstateTypes;
+use frontend\models\RealEstate;
 use Yii;
 use yii\base\Exception;
 use yii\data\ActiveDataProvider;
@@ -69,6 +72,23 @@ class SiteController extends AccessController
         return $this->render('landing-config', ['dataProvider' => $dataProvider]);
     }
 
+    public function actionRealEstate() {
+        $dataProvider = new ActiveDataProvider([
+            'query' => RealEstateTypes::find(),
+        ]);
+        return $this->render('real-estate-type', ['dataProvider' => $dataProvider]);
+    }
+
+    public function actionCreateRealEstate() {
+        $model = new RealEstateTypes();
+
+        if (Yii::$app->request->isPost && $model->load(Yii::$app->request->post())) {
+            if (!$model->save()) Yii::$app->session->setFlash('error', Json::encode($model->getFirstErrors()));
+            return $this->redirect(['site/real-estate']);
+        }
+        return $this->renderAjax('_real-estate-form', ['model' => $model]);
+    }
+
     /**
      * @throws Exception
      */
@@ -82,6 +102,48 @@ class SiteController extends AccessController
             return $this->redirect(['site/landing-pages']);
         }
         return $this->renderAjax('_landing-form', ['model' => $model]);
+    }
+
+    /**
+     * @throws NotFoundHttpException
+     */
+    public function actionRealEstateConfig($slug) {
+        $realEstateModel = RealEstateTypes::getBySlug($slug);
+        return $this->render('real-estate-config', ['model' => $realEstateModel]);
+    }
+
+    /**
+     * @throws Exception
+     */
+    public function actionAddItem($validate = false) {
+        $model = new RealEstateItem();
+
+        if (Yii::$app->request->isPost && $model->load(Yii::$app->request->post())) {
+            $img = Utilities::uploadImage(UploadedFile::getInstance($model, 'img'));
+            $model->img = $img;
+            $model->validate();
+            Yii::$app->response->format = Response::FORMAT_JSON;
+            if (!empty($model->errors) || $validate) {
+                Yii::$app->response->statusCode = 201;
+                return $model->errors;
+            }
+            return $model->prepareData();
+        }
+        return $this->renderAjax('_item', ['model' => $model]);
+    }
+
+    /**
+     * @throws Exception
+     * @throws NotFoundHttpException
+     */
+    public function actionEditRealEstate($slug) {
+        $model = RealEstateTypes::getBySlug($slug);
+
+        if (Yii::$app->request->isPost && $model->load(Yii::$app->request->post())) {
+            if (!$model->save()) Yii::$app->session->setFlash('error', Json::encode($model->getFirstErrors()));
+            return $this->redirect(['site/real-estate']);
+        }
+        return $this->renderAjax('_real-estate-form', ['model' => $model]);
     }
 
     /**
@@ -106,6 +168,15 @@ class SiteController extends AccessController
         $model = Landing::getBySlug($slug);
         Landing::deleteAll(['id' => $model->id]);
         Landing::purgeLandings();
+        return true;
+    }
+
+    /**
+     * @throws NotFoundHttpException
+     */
+    public function actionDeleteRealEstate($slug) {
+        $model = RealEstateTypes::getBySlug($slug);
+        RealEstateTypes::deleteAll(['id' => $model->id]);
         return true;
     }
 }

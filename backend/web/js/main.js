@@ -51,4 +51,4 @@ $('[data-role="delete"]').on('click', function () {
             }
         });
     })
-})
+});

@@ -33,7 +33,7 @@ class Landing extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['slug'], 'required'],
+            [['slug', 'img', 'main_text', 'body', 'phone'], 'required', 'message' => "لا يمكن ترك حقل {attribute} فارغًـا."],
             [['has_whatsapp'], 'integer'],
             [['slug', 'img', 'main_text', 'body', 'phone'], 'string', 'max' => 255],
             [['slug'], 'unique'],

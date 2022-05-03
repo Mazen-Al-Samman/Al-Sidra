@@ -18,11 +18,11 @@ use yii\helpers\Url;
                 <div class="widget-header">
                     <div class="row">
                         <div class="col-xl-6 col-md-6 col-sm-12 pt-3 text-left col-6">
-                            <h3 class="font-weight-bold">الصفحــات الثابــتة</h3>
+                            <h3 class="font-weight-bold">أنــواع العقــارات</h3>
                         </div>
                         <div class="col-xl-6 col-md-6 col-sm-12 pt-3 text-right col-6">
+                            <?= Html::button('إضافة عقار جديد', ['class' => 'btn btn-success font-weight-bold', 'data-modal' => Yii::$app->controller->id, 'data-label' => "إضــافـــة عقـــار", 'value' => Url::to(['site/create-real-estate'])]); ?>
                         </div>
-                        <?= Html::button('إنشــاء صفحة جديدة', ['class' => 'btn btn-success font-weight-bold', 'data-modal' => Yii::$app->controller->id, 'data-label' => "إنشــاء صفــحة", 'value' => Url::to(['site/create-landing'])]); ?>
                     </div>
                 </div>
                 <div class="widget-content widget-content-area">
@@ -32,32 +32,26 @@ use yii\helpers\Url;
                         'rowOptions' => ['class' => 'text-center'],
                         'columns' => [
                             'slug',
-                            'main_text',
-                            'body',
-                            'phone',
+                            'title',
                             [
-                                'attribute' => 'img',
-                                'format' => 'html',
+                                'attribute' => 'created_at',
                                 'value' => function ($model) {
-                                    return Html::img($model->imagePath, ['width' => 50]);
-                                }
-                            ],
-                            [
-                                'attribute' => 'has_whatsapp',
-                                'value' => function ($model) {
-                                    return Constant::YES_NO[$model->has_whatsapp];
+                                    return date('Y-m-d', strtotime($model->created_at));
                                 }
                             ],
                             [
                                 'class' => 'yii\grid\ActionColumn',
                                 'header' => '<span class="text-dark">الإعدادات</span>',
-                                'template' => '{edit} {delete}',
+                                'template' => '{edit} {delete} {config}',
                                 'buttons' => [
                                     'edit' => function ($url, $model) {
-                                        return Html::button('تعديل', ['class' => 'btn btn-info font-weight-bold', 'data-modal' => Yii::$app->controller->id, 'data-label' => "تـعــديل الصفـحــة", 'value' => Url::to(['site/edit-landing', 'slug' => $model->slug])]);
+                                        return Html::button('تعديل', ['class' => 'btn btn-info font-weight-bold', 'data-modal' => Yii::$app->controller->id, 'data-label' => "تـعــديل العقــار", 'value' => Url::to(['site/edit-real-estate', 'slug' => $model->slug])]);
                                     },
                                     'delete' => function ($url, $model) {
-                                        return Html::button('حذف', ['class' => 'btn btn-danger font-weight-bold', 'data-role' => 'delete', 'data-url' => Url::to(['site/delete-landing', 'slug' => $model->slug])]);
+                                        return Html::button('حذف', ['class' => 'btn btn-danger font-weight-bold', 'data-role' => 'delete', 'data-url' => Url::to(['site/delete-real-estate', 'slug' => $model->slug])]);
+                                    },
+                                    'config' => function ($url, $model) {
+                                        return Html::a('المحتوى', Url::to(['site/real-estate-config', 'slug' => $model->slug]),['class' => 'btn btn-warning font-weight-bold']);
                                     },
                                 ],
                             ],

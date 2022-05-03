@@ -2648,3 +2648,21 @@ table .badge-success, table .badge-primary, table .badge-warning, table .badge-d
 .summary {
     display: none;
 }
+
+.sortable.grid {
+    border: none;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    column-gap: 20px;
+    margin: auto;
+    row-gap: 20px;
+}
+
+.sortable.grid li {
+    border: none;
+}
+
+.card-img-top {
+    width: 80% !important;
+    margin: auto;
+}

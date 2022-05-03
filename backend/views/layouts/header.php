@@ -128,6 +128,9 @@ $translations = [
                         <li>
                             <a href="<?= Url::to(['site/landing-pages']) ?>">الصفحات الثابتـة</a>
                         </li>
+                        <li>
+                            <a href="<?= Url::to(['site/real-estate']) ?>">أنواع العقــارات</a>
+                        </li>
                     </ul>
                 </li>
             </ul>
