@@ -157,12 +157,6 @@ a.desc:after {
     transform: scale(1.03);
 }
 
-/*.with-background {*/
-/*    background-image: url(../img/services-section.png);*/
-/*    background-attachment: fixed;*/
-/*    background-size: contain;*/
-/*}*/
-
 .with-background:after {
     content: "";
     background-image: url(../img/services-section.png);
@@ -211,4 +205,15 @@ a.desc:after {
 .select2-container--krajee-bs5 .select2-results__option.select2-results__option--selected, .select2-container--krajee-bs5 .select2-results__option[aria-selected=true] {
     background-color: #668cad !important;
     color: white !important;
+}
+
+.card-img-div {
+    width: 100%;
+    height: 300px;
+    background-size: contain;
+}
+
+.body-text {
+    color: #808080;
+    line-height: 25px;
 }

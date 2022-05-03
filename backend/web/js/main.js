@@ -24,7 +24,6 @@ $('[data-role="delete"]').on('click', function () {
         cancelButtonText: 'إلغاء',
         padding: '20'
     }).then(function () {
-        console.log(url);
         $.ajax({
             'url': url,
             'type': 'POST',
@@ -51,4 +50,21 @@ $('[data-role="delete"]').on('click', function () {
             }
         });
     })
+});
+
+$("body").on('click', '.delete-icon', function () {
+    let li = $(this).closest('li');
+    swal({
+        title: '<span class="font-weight-bold">هل أنـت متأكـد ؟</span>',
+        text: "لا يمكن الرجوع بالتغييرات بعد التنفيذ !",
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'حذف',
+        confirmButtonClass: 'font-weight-bold btn-info',
+        cancelButtonClass: 'font-weight-bold',
+        cancelButtonText: 'إلغاء',
+        padding: '20'
+    }).then(function () {
+        li.remove();
+    });
 });

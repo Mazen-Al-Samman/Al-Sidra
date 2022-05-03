@@ -3,6 +3,7 @@
 namespace common\models;
 
 use Yii;
+use yii\helpers\Url;
 use yii\web\NotFoundHttpException;
 
 /**
@@ -60,7 +61,23 @@ class RealEstateTypes extends \yii\db\ActiveRecord
         return $model;
     }
 
+    public function getOrCreateConfig() {
+        if (!empty($this->config)) return $this->config;
+        $model = new RealEstateConfig();
+        $model->real_estate_id = $this->id;
+        return $model;
+    }
+
     public function getConfig() {
-        return $this->hasMany(RealEstateConfig::class, ['real_estate_id' => 'id']);
+        return $this->hasOne(RealEstateConfig::class, ['real_estate_id' => 'id']);
+    }
+
+    public static function getAll() {
+        $models = self::find()->all();
+        $typesData = [];
+        foreach ($models as $model) {
+            $typesData[] = ['url' => Url::to(['site/view', 'slug' => $model->slug]), 'label' => $model->title];
+        }
+        return $typesData;
     }
 }

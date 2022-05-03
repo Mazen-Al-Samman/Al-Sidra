@@ -5,7 +5,8 @@ use yii\helpers\Url;
 $currentBreadcrumbKey = Yii::$app->controller->id . "-" . Yii::$app->controller->action->id;
 $translations = [
     'site-index' => 'الرئيسية',
-    'site-landing-pages' => 'الصفحات الثابتة'
+    'site-landing-pages' => 'الصفحات الثابتة',
+    'site-real-estate-config' => 'أنــواع العـقـارات'
 ];
 
 ?>

@@ -4,15 +4,12 @@
 use common\models\RealEstateItem;
 use yii\bootstrap4\ActiveForm;
 use yii\helpers\Html;
-use yii\helpers\Url;
 
 ?>
     <div class="widget-content widget-content-area text-left">
         <?php $form = ActiveForm::begin([
             'method' => 'POST',
             'id' => 'item-form',
-            'validationUrl' => Url::to(['site/add-item', 'validate' => true]),
-            'enableAjaxValidation' => true
         ]) ?>
         <div class="main-data text-center">
             <div class="row d-flex justify-content-center">
@@ -36,7 +33,7 @@ use yii\helpers\Url;
 
 <?php
 $this->registerJs(<<< JS
-$('#item-form').submit(function(e) {
+$('body').on('submit', '#item-form', function(e) {
     e.preventDefault();
     e.stopImmediatePropagation();
     e.stopPropagation();
@@ -50,7 +47,15 @@ $('#item-form').submit(function(e) {
         success: function(data, textStatus, xhr) {
             if (xhr.status === 201) return false;
             let html = $('#template').html();
-            html = html.replace('__img__', data.img).replace('__title__', data.title).replace('__body__', data.body);
+            let randomString = (Math.random() + 1).toString(36).substring(5);
+            html = html.replace('__img__', data.img)
+            .replace('__title__', data.title)
+            .replace('__body__', data.body)
+            .replace('__input_title__', data.title)
+            .replace('__input_body__', data.body)
+            .replace('__input_img__', data.img)
+            .replaceAll('__key__', randomString);
+            
             let sortable = $('.sortable');
             sortable.append(html);
             $('.modal').modal('hide');

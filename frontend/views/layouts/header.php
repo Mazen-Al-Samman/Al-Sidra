@@ -1,10 +1,12 @@
 <?php
 
 use common\models\Landing;
+use common\models\RealEstateTypes;
 use yii\helpers\Html;
 use yii\helpers\Url;
 
 $landingPages = Landing::getAll(false);
+$realEstateTypes = RealEstateTypes::getAll();
 $currentKey = Yii::$app->controller->id . "-" . Yii::$app->controller->action->id;
 $navBarItems = [
     [
@@ -27,11 +29,7 @@ $navBarItems = [
     [
         'label' => 'عقـــارات',
         'key' => 'real-estate-types',
-        'items' => [
-            ['label' => "أرض", 'url' => Url::to(['real-estate/rate'])],
-            ['label' => "مزرعة", 'url' => Url::to(['real-estate/rate'])],
-            ['label' => "محل", 'url' => Url::to(['real-estate/rate'])],
-        ],
+        'items' => $realEstateTypes,
         'url' => Url::to(['site/index']),
         'guest' => true
     ],

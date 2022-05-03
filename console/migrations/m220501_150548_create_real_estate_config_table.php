@@ -16,9 +16,7 @@ class m220501_150548_create_real_estate_config_table extends Migration
             CREATE TABLE real_estate_config (
                 id INT AUTO_INCREMENT PRIMARY KEY,
                 real_estate_id INT NOT NULL,
-                card_title VARCHAR(255) NOT NULL,
-                card_desc VARCHAR(255) NOT NULL,
-                card_img VARCHAR(255) NOT NULL
+                cards JSON
             )
 SQL
         );

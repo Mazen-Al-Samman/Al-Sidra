@@ -3,15 +3,14 @@
 namespace common\models;
 
 use Yii;
+use yii\helpers\Json;
 
 /**
  * This is the model class for table "real_estate_config".
  *
  * @property int $id
  * @property int $real_estate_id
- * @property string $card_title
- * @property string $card_desc
- * @property string $card_img
+ * @property string $cards [json]
  */
 class RealEstateConfig extends \yii\db\ActiveRecord
 {
@@ -29,9 +28,19 @@ class RealEstateConfig extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['real_estate_id', 'card_title', 'card_desc', 'card_img'], 'required'],
+            [['real_estate_id'], 'required'],
             [['real_estate_id'], 'integer'],
-            [['card_title', 'card_desc', 'card_img'], 'string', 'max' => 255],
+            ['cards', 'filter', 'filter' => function ($value) {
+                if (empty($value)) return [];
+                $cards = [];
+                foreach ($value as $item) {
+                    $itemModel = new RealEstateItem();
+                    $itemModel->load($item, '');
+                    $itemModel->validate();
+                    $cards[] = $itemModel;
+                }
+                return $cards;
+            }],
         ];
     }
 

@@ -3,6 +3,7 @@
 namespace common\models;
 
 use yii\base\Model;
+use yii\helpers\Json;
 
 class RealEstateItem extends Model
 {
@@ -28,9 +29,21 @@ class RealEstateItem extends Model
     public function attributeLabels()
     {
         return [
-          'title' => 'النص الرئيسي',
-          'body' => 'النص الثانوي',
-          'img' => 'الصـورة',
+          'title' => 'النص الرئـيـسـي',
+          'body' => 'النص الثـانـوي',
+          'img' => 'الصــورة',
         ];
+    }
+
+    public static function prepareItems($itemsData) {
+        if (empty($itemsData)) return [];
+        $items = [];
+        foreach ($itemsData as $item) {
+            $model = new self();
+            $model->load($item, '');
+            if (!$model->validate()) continue;
+            $items[] = $model;
+        }
+        return $items;
     }
 }

@@ -18,6 +18,7 @@ class AppAsset extends AssetBundle
         'css/plugins.css',
         'plugins/sweetalerts/sweetalert.css',
         'plugins/bootstrap-select/bootstrap-select.min.css',
+        'plugins/perfect-scrollbar/perfect-scrollbar.css',
         'plugins/apex/apexcharts.css',
         'plugins/select2/select2.min.css',
         'plugins/flatpickr/flatpickr.css',

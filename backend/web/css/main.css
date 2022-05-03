@@ -93,7 +93,7 @@ select.form-custom::-ms-expand {
 .toggle-code-snippet {
     border: none;
     background-color: transparent !important;
-    padding: 0px !important;
+    padding: 0 !important;
     box-shadow: none !important;
     color: #888ea8 !important;
     margin-bottom: -24px;
@@ -381,7 +381,7 @@ select.form-control.form-custom {
     width: 100%;
     height: calc(2.25rem + 2px);
     vertical-align: middle;
-    background: #fff url(../../img/arrow-down.png) no-repeat left 0.75rem center;
+    background: #fff url(../img/arrow-down.png) no-repeat left 0.75rem center;
     background-size: 13px 14px;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -2662,7 +2662,25 @@ table .badge-success, table .badge-primary, table .badge-warning, table .badge-d
     border: none;
 }
 
+.sortable li:focus, .sortable li:hover {
+    background-color: transparent;
+}
+
 .card-img-top {
-    width: 80% !important;
+    width: 90% !important;
+    height: 250px;
     margin: auto;
+}
+
+.card-body {
+    height: 130px;
+    overflow-y: auto;
+    padding: 0 10px !important;
+}
+
+.delete-icon {
+    position: absolute;
+    z-index: 1000;
+    left: -10px;
+    top: -13px;
 }

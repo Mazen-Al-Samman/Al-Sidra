@@ -3,19 +3,13 @@
 namespace frontend\controllers;
 
 use common\models\Landing;
-use frontend\models\ResendVerificationEmailForm;
-use frontend\models\VerifyEmailForm;
+use common\models\RealEstateTypes;
 use Yii;
-use yii\base\InvalidArgumentException;
-use yii\web\BadRequestHttpException;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use common\models\LoginForm;
-use frontend\models\PasswordResetRequestForm;
-use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
-use frontend\models\ContactForm;
 use yii\web\NotFoundHttpException;
 
 /**
@@ -86,6 +80,14 @@ class SiteController extends Controller
     public function actionLanding($slug) {
         $landingModel = Landing::getBySlug($slug);
         return $this->render('landing', ['model' => $landingModel]);
+    }
+
+    /**
+     * @throws NotFoundHttpException
+     */
+    public function actionView($slug) {
+        $model = RealEstateTypes::getBySlug($slug);
+        return $this->render('real-estate-view', ['model' => $model]);
     }
 
     /**

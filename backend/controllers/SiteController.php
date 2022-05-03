@@ -65,21 +65,24 @@ class SiteController extends AccessController
         return $this->goHome();
     }
 
-    public function actionLandingPages() {
+    public function actionLandingPages()
+    {
         $dataProvider = new ActiveDataProvider([
-           'query' => Landing::find(),
+            'query' => Landing::find(),
         ]);
         return $this->render('landing-config', ['dataProvider' => $dataProvider]);
     }
 
-    public function actionRealEstate() {
+    public function actionRealEstate()
+    {
         $dataProvider = new ActiveDataProvider([
             'query' => RealEstateTypes::find(),
         ]);
         return $this->render('real-estate-type', ['dataProvider' => $dataProvider]);
     }
 
-    public function actionCreateRealEstate() {
+    public function actionCreateRealEstate()
+    {
         $model = new RealEstateTypes();
 
         if (Yii::$app->request->isPost && $model->load(Yii::$app->request->post())) {
@@ -92,7 +95,8 @@ class SiteController extends AccessController
     /**
      * @throws Exception
      */
-    public function actionCreateLanding() {
+    public function actionCreateLanding()
+    {
         $model = new Landing();
 
         if (Yii::$app->request->isPost && $model->load(Yii::$app->request->post())) {
@@ -107,15 +111,26 @@ class SiteController extends AccessController
     /**
      * @throws NotFoundHttpException
      */
-    public function actionRealEstateConfig($slug) {
+    public function actionRealEstateConfig($slug)
+    {
         $realEstateModel = RealEstateTypes::getBySlug($slug);
+        Yii::$app->db->schema->refresh();
+        if (Yii::$app->request->isPost) {
+            $configModel = $realEstateModel->getOrCreateConfig();
+            $configModel->cards = Yii::$app->request->post('RealEstateItem');
+            if (!$configModel->save()) {
+                Yii::$app->session->setFlash('error', 'حـدث خطــأ مــا');
+            }
+            return $this->redirect(['site/real-estate-config', 'slug' => $slug]);
+        }
         return $this->render('real-estate-config', ['model' => $realEstateModel]);
     }
 
     /**
      * @throws Exception
      */
-    public function actionAddItem($validate = false) {
+    public function actionAddItem($validate = false)
+    {
         $model = new RealEstateItem();
 
         if (Yii::$app->request->isPost && $model->load(Yii::$app->request->post())) {
@@ -136,7 +151,8 @@ class SiteController extends AccessController
      * @throws Exception
      * @throws NotFoundHttpException
      */
-    public function actionEditRealEstate($slug) {
+    public function actionEditRealEstate($slug)
+    {
         $model = RealEstateTypes::getBySlug($slug);
 
         if (Yii::$app->request->isPost && $model->load(Yii::$app->request->post())) {
@@ -149,7 +165,8 @@ class SiteController extends AccessController
     /**
      * @throws Exception
      */
-    public function actionEditLanding($slug) {
+    public function actionEditLanding($slug)
+    {
         $model = Landing::getBySlug($slug);
 
         if (Yii::$app->request->isPost && $model->load(Yii::$app->request->post())) {
@@ -164,7 +181,8 @@ class SiteController extends AccessController
     /**
      * @throws NotFoundHttpException
      */
-    public function actionDeleteLanding($slug) {
+    public function actionDeleteLanding($slug)
+    {
         $model = Landing::getBySlug($slug);
         Landing::deleteAll(['id' => $model->id]);
         Landing::purgeLandings();
@@ -174,7 +192,8 @@ class SiteController extends AccessController
     /**
      * @throws NotFoundHttpException
      */
-    public function actionDeleteRealEstate($slug) {
+    public function actionDeleteRealEstate($slug)
+    {
         $model = RealEstateTypes::getBySlug($slug);
         RealEstateTypes::deleteAll(['id' => $model->id]);
         return true;
