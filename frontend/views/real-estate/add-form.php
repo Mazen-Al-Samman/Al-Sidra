@@ -1,11 +1,13 @@
 <?php
 /** @var $model RealEstateRequest */
 
+use common\models\RealEstateTypes;
 use frontend\models\RealEstateRequest;
 use kartik\select2\Select2;
+use yii\bootstrap4\ActiveForm;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
-use yii\widgets\ActiveForm;
+use yii\helpers\Url;
 
 ?>
 
@@ -13,11 +15,16 @@ use yii\widgets\ActiveForm;
     <div class="row content-center">
         <div class="col-10 real-estate-request with-background text-center p-3" dir="rtl">
             <h1 class="section-heading centered font-din">إضـــافة عقـــار</h1>
-            <?php $form = ActiveForm::begin(['method' => 'POST']) ?>
+            <?php $form = ActiveForm::begin([
+                'id' => 'add-form',
+                'method' => 'POST',
+                'enableAjaxValidation' => true,
+                'validateOnSubmit' => true,
+            ]) ?>
 
             <div class="row content-center color-sky">
                 <div class="col-3">
-                    <?= $form->field($model, 'contractType')->widget(Select2::classname(), [
+                    <?= $form->field($model, 'contract_type')->widget(Select2::classname(), [
                         'data' => ArrayHelper::map([['id' => '1', 'value' => 'للبيــع'], ['id' => '2', 'value' => 'للإيجــار']], 'value', 'value'),
                         'theme' => Select2::THEME_KRAJEE_BS5,
                         'options' => ['placeholder' => 'نوع العقــد'],
@@ -26,8 +33,8 @@ use yii\widgets\ActiveForm;
                 </div>
 
                 <div class="col-3">
-                    <?= $form->field($model, 'realEstateType')->widget(Select2::classname(), [
-                        'data' => ArrayHelper::map([['id' => '1', 'value' => 'للبيــع'], ['id' => '2', 'value' => 'للإيجــار']], 'value', 'value'),
+                    <?= $form->field($model, 'real_estate_type')->widget(Select2::classname(), [
+                        'data' => ArrayHelper::map(RealEstateTypes::getAll(), 'label', 'label'),
                         'theme' => Select2::THEME_KRAJEE_BS5,
                         'options' => ['placeholder' => 'نوع العقــار'],
                         'language' => 'ar',
@@ -55,11 +62,11 @@ use yii\widgets\ActiveForm;
 
             <div class="row content-center color-sky">
                 <div class="col-3">
-                    <?= $form->field($model, 'numOfInterfaces')->textInput(['class' => 'form-control']) ?>
+                    <?= $form->field($model, 'num_of_interfaces')->textInput(['class' => 'form-control']) ?>
                 </div>
 
                 <div class="col-3">
-                    <?= $form->field($model, 'numOfStreets')->textInput(['class' => 'form-control']) ?>
+                    <?= $form->field($model, 'num_of_streets')->textInput(['class' => 'form-control']) ?>
                 </div>
 
                 <div class="col-3">
@@ -73,7 +80,7 @@ use yii\widgets\ActiveForm;
                 </div>
 
                 <div class="col-3">
-                    <?= $form->field($model, 'name')->textInput(['class' => 'form-control']) ?>
+                    <?= $form->field($model, 'customer_name')->textInput(['class' => 'form-control']) ?>
                 </div>
 
                 <div class="col-3">

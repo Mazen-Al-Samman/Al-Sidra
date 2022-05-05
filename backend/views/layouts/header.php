@@ -6,7 +6,8 @@ $currentBreadcrumbKey = Yii::$app->controller->id . "-" . Yii::$app->controller-
 $translations = [
     'site-index' => 'الرئيسية',
     'site-landing-pages' => 'الصفحات الثابتة',
-    'site-real-estate-config' => 'أنــواع العـقـارات'
+    'site-real-estate' => 'أنــواع العـقـارات',
+    'site-real-estate-config' => 'أنــواع العـقـارات',
 ];
 
 ?>

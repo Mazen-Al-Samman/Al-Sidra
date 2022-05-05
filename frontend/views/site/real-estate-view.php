@@ -9,7 +9,7 @@ if (!empty($typeConfig)) $typeConfig->validate();
 ?>
 
 <div class="container text-center">
-    <h2 class="main-text font-weight-bold font-din" style="letter-spacing: 2px;"><?= $model->title ?></h2>
+    <h1 class="section-heading centered font-din"><?= $model->title ?></h1>
     <div class="row content-center mt-5">
         <?php foreach ($typeConfig->cards as $card) : ?>
             <div class="col-lg-4 mt-3">

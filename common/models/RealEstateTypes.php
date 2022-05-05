@@ -80,4 +80,8 @@ class RealEstateTypes extends \yii\db\ActiveRecord
         }
         return $typesData;
     }
+
+    public static function getAllNames() {
+        return self::find()->select('title')->column();
+    }
 }
