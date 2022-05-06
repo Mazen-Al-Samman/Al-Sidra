@@ -11,7 +11,11 @@ use yii\helpers\Url;
 <div class="container content-center">
     <div class="row w-100 rounded content-center text-center">
         <div class="col-8 bg-light p-5 rounded">
-            <?php $form = ActiveForm::begin(['id' => 'signup-form']); ?>
+            <?php $form = ActiveForm::begin([
+                'id' => 'signup-form',
+                'enableAjaxValidation' => true,
+                'validateOnSubmit' => true
+            ]); ?>
             <?= $form->field($model, 'username')->textInput() ?>
             <br>
             <?= $form->field($model, 'email')->textInput()->input('email') ?>
@@ -25,7 +29,8 @@ use yii\helpers\Url;
             </div>
             <?php ActiveForm::end(); ?>
 
-            <p class="font-15 font-weight-bold mt-2">لديـك حســاب؟ سـجل الدخول من <a href="<?= Url::to(['site/login']) ?>">هنا</a></p>
+            <p class="font-15 font-weight-bold mt-2">لديـك حســاب؟ سـجل الدخول من <a
+                        href="<?= Url::to(['site/login']) ?>">هنا</a></p>
         </div>
     </div>
 </div>

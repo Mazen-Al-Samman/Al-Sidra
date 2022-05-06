@@ -3,14 +3,16 @@
 namespace frontend\controllers;
 
 use common\models\Landing;
+use common\models\Member;
 use common\models\RealEstateTypes;
 use Yii;
+use yii\base\Exception;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
-use common\models\LoginForm;
-use frontend\models\SignupForm;
 use yii\web\NotFoundHttpException;
+use yii\web\Response;
+use yii\widgets\ActiveForm;
 
 /**
  * Site controller
@@ -25,6 +27,7 @@ class SiteController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
+                'user' => 'member',
                 'only' => ['logout', 'signup'],
                 'rules' => [
                     [
@@ -57,17 +60,13 @@ class SiteController extends Controller
             'error' => [
                 'class' => 'yii\web\ErrorAction',
             ],
-            'captcha' => [
-                'class' => 'yii\captcha\CaptchaAction',
-                'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
-            ],
         ];
     }
 
     /**
      * Displays homepage.
      *
-     * @return mixed
+     * @return string
      */
     public function actionIndex()
     {
@@ -77,7 +76,8 @@ class SiteController extends Controller
     /**
      * @throws NotFoundHttpException
      */
-    public function actionLanding($slug) {
+    public function actionLanding($slug)
+    {
         $landingModel = Landing::getBySlug($slug);
         return $this->render('landing', ['model' => $landingModel]);
     }
@@ -85,56 +85,62 @@ class SiteController extends Controller
     /**
      * @throws NotFoundHttpException
      */
-    public function actionView($slug) {
+    public function actionView($slug)
+    {
         $model = RealEstateTypes::getBySlug($slug);
         return $this->render('real-estate-view', ['model' => $model]);
     }
 
-    /**
-     * Logs in a user.
-     *
-     * @return mixed
-     */
     public function actionLogin()
     {
-        if (!Yii::$app->user->isGuest) {
-            return $this->goHome();
-        }
+        if (!Yii::$app->member->isGuest) return $this->goHome();
 
-        $model = new LoginForm();
-        if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
+        $model = new Member();
+        if (Yii::$app->request->isPost && $model->load(Yii::$app->request->post())) {
+            $loggedInModel = $model->getMember();
+            if (!empty($loggedInModel)) {
+                Yii::$app->member->login($loggedInModel, 3600 * 24 * 30);
+                return $this->goBack();
+            }
+            ActiveForm::validate($model);
         }
-
         $model->password = '';
-
         return $this->render('login', [
             'model' => $model,
         ]);
     }
 
     /**
-     * Logs out the current user.
-     *
-     * @return mixed
+     * @return Response
      */
     public function actionLogout()
     {
-        Yii::$app->user->logout();
-
+        Yii::$app->member->logout();
         return $this->goHome();
     }
 
     /**
-     * Signs user up.
-     *
-     * @return mixed
+     * @throws Exception
      */
     public function actionSignup()
     {
-        $model = new SignupForm();
-        if ($model->load(Yii::$app->request->post()) && $model->signup()) {
-            Yii::$app->session->setFlash('success', 'Thank you for registration. Please check your inbox for verification email.');
+        $model = new Member();
+        $model->scenario = 'signup';
+
+        if (Yii::$app->request->isAjax && $model->load(Yii::$app->request->post())) {
+            Yii::$app->response->format = Response::FORMAT_JSON;
+            return ActiveForm::validate($model);
+        }
+
+        if (Yii::$app->request->isPost && $model->load(Yii::$app->request->post())) {
+            $model->generateAuthKey();
+            $type = 'success';
+            $msg = 'تم التسجيل , يمكنك تسجيل الدخول الان';
+            if (!$model->save()) {
+                $type = 'error';
+                $msg = 'حدث خطأ ما .. يرجى المحاولة لاحقـًا';
+            }
+            Yii::$app->session->setFlash($type, $msg);
             return $this->goHome();
         }
 

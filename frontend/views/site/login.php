@@ -4,6 +4,7 @@
 use common\models\LoginForm;
 use yii\bootstrap4\ActiveForm;
 use yii\helpers\Html;
+use yii\helpers\Url;
 
 ?>
 
@@ -11,7 +12,7 @@ use yii\helpers\Html;
     <div class="row w-100 rounded content-center text-center">
         <div class="col-8 bg-light p-5 rounded">
             <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
-            <?= $form->field($model, 'username')->textInput() ?>
+            <?= $form->field($model, 'phone')->textInput() ?>
             <br>
             <?= $form->field($model, 'password')->passwordInput() ?>
 
@@ -20,7 +21,7 @@ use yii\helpers\Html;
             </div>
             <?php ActiveForm::end(); ?>
 
-            <p class="font-15 font-weight-bold mt-2">مستخدم جديد؟ يمكنك إنشاء حساب من <a href="#">هنا</a></p>
+            <p class="font-15 font-weight-bold mt-2">مستخدم جديد؟ يمكنك إنشاء حساب من <a href="<?= Url::to(['site/signup']) ?>">هنا</a></p>
         </div>
     </div>
 </div>

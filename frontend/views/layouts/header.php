@@ -56,7 +56,7 @@ $navBarItems = [
     ],
 ];
 
-if (Yii::$app->user->isGuest) {
+if (Yii::$app->member->isGuest) {
     $navBarItems = array_merge($navBarItems, [
         [
             'label' => 'التسـجيل',
@@ -93,7 +93,7 @@ if (Yii::$app->user->isGuest) {
     <div class="row content-center" style="margin-top: 10px; align-items: center">
         <?php
         foreach ($navBarItems as $navBarItem) : ?>
-            <?php if (!$navBarItem['guest'] && Yii::$app->user->isGuest) continue; ?>
+            <?php if (!$navBarItem['guest'] && Yii::$app->member->isGuest) continue; ?>
             <div class="col-lg-2 col-sm-12 text-center">
                 <?php if (empty($navBarItem['items'])) : ?>
                     <?= Html::a($navBarItem['label'], $navBarItem['url'], ['class' => ($currentKey == $navBarItem['key'] ? 'btn main-bg w-100' : 'href-link mt-2 text-dark')]) ?>

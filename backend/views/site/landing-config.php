@@ -20,12 +20,13 @@ use yii\helpers\Url;
                         <div class="col-xl-6 col-md-6 col-sm-12 pt-3 text-left col-6">
                             <h3 class="font-weight-bold">الصفحــات الثابــتة</h3>
                         </div>
-                        <div class="col-xl-6 col-md-6 col-sm-12 pt-3 text-right col-6">
+                        <div class="col-xl-6 col-md-6 col-sm-12 pt-3 text-right col-6"></div>
+                        <div class="col-xl-12 mt-2">
+                            <?= Html::button('إنشــاء صفحة جديدة', ['class' => 'btn btn-success font-weight-bold', 'data-modal' => Yii::$app->controller->id, 'data-label' => "إنشــاء صفــحة", 'value' => Url::to(['site/create-landing'])]); ?>
                         </div>
-                        <?= Html::button('إنشــاء صفحة جديدة', ['class' => 'btn btn-success font-weight-bold', 'data-modal' => Yii::$app->controller->id, 'data-label' => "إنشــاء صفــحة", 'value' => Url::to(['site/create-landing'])]); ?>
                     </div>
                 </div>
-                <div class="widget-content widget-content-area">
+                <div class="widget-content widget-content-area table-responsive">
                     <?= GridView::widget([
                         'dataProvider' => $dataProvider,
                         'headerRowOptions' => ['class' => 'text-center'],

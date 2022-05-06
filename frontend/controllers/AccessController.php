@@ -12,6 +12,7 @@ class AccessController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
+                'user' => 'member',
                 'rules' => [
                     [
                         'allow' => true,
