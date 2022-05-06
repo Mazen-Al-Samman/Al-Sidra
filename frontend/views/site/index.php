@@ -26,10 +26,10 @@ AppAsset::register($this);
         </div>
     </div>
     <div class="row content-center mt-5">
-        <div class="col-12 services-section">
+        <div class="col-lg-12 services-section">
             <h1 class="section-heading centered font-din">خدمـــاتـــنـــا</h1>
             <div class="row content-center" id="services">
-                <div class="col-3 mt-5">
+                <div class="col-lg-3 mt-5">
                     <div class="bg-light text-center p-5 rounded" style="height: 300px">
                         <img src="<?= Yii::getAlias('@img') . '/13.png' ?>" loading="lazy" width="80" alt="Manage"
                              class="img-fluid">
@@ -38,7 +38,7 @@ AppAsset::register($this);
                             وفقاً لخطط واستراتيجيات تلبي التطورات المستقبلية</p>
                     </div>
                 </div>
-                <div class="col-3 ml-3 mr-3 mt-5">
+                <div class="col-lg-3 ml-3 mr-3 mt-5">
                     <div class="bg-light text-center p-5 rounded" style="height: 300px">
                         <img src="<?= Yii::getAlias('@img') . '/12.png' ?>" loading="lazy" width="80" alt="Manage"
                              class="img-fluid">
@@ -47,7 +47,7 @@ AppAsset::register($this);
                             بعمليات حسابية دقيقة لأصول الشركة</p>
                     </div>
                 </div>
-                <div class="col-3 mt-5">
+                <div class="col-lg-3 mt-5">
                     <div class="bg-light text-center p-5 rounded" style="height: 300px">
                         <img src="<?= Yii::getAlias('@img') . '/11.png' ?>" loading="lazy" width="80" alt="Manage"
                              class="img-fluid">
@@ -63,7 +63,7 @@ AppAsset::register($this);
         <div class="col-10">
             <h1 class="section-heading centered font-din">نبذة عن السدرة العقارية</h1>
             <div class="row content-center">
-                <div class="col-3">
+                <div class="col-lg-3">
                     <div class="text-center p-5 rounded" style="height: 300px">
                         <h5 class="heading-6 color-sky">رسالتنا</h5>
                         <p class="mt-5">تقديم الأساليب والتقنيات الحديثة لتطوير وتسهيل المعاملات في كافة أنواع
@@ -71,7 +71,7 @@ AppAsset::register($this);
                     </div>
                 </div>
 
-                <div class="col-3">
+                <div class="col-lg-3">
                     <div class="text-center p-5 rounded" style="height: 300px">
                         <h5 class="heading-6 color-sky">رؤيتنا</h5>
                         <p class="mt-5">التوسع في المجال العقاري بتقديم خدمات وحلول عقارية متكاملة رفيعة المستوى ومتميزة
@@ -79,7 +79,7 @@ AppAsset::register($this);
                     </div>
                 </div>
 
-                <div class="col-3 ml-3 mr-3">
+                <div class="col-lg-3 ml-3 mr-3">
                     <div class="text-center p-5 rounded" style="height: 300px">
                         <h5 class="heading-6 color-sky">أهدافنا</h5>
                         <p class="mt-5">زيادة القدرة على اكتشاف أفضل الفرص والأفكار الإستثمارية وتقديم جميع الخدمات
@@ -90,11 +90,11 @@ AppAsset::register($this);
         </div>
     </div>
     <div class="row content-center mt-5">
-        <div class="col-12 services-section">
+        <div class="col-lg-12 services-section">
             <h1 class="section-heading centered font-din">تواصــل معنـــا</h1>
             <div class="row content-center">
-                <div class="col-3 p-3 rounded text-center bg-light">
-                    <h1 class="font-din mt-5">هــاتــف أو واتســاب</h1>
+                <div class="col-lg-3 mb-3 p-3 rounded text-center bg-light">
+                    <h1 class="font-din mt-lg-5">هــاتــف أو واتســاب</h1>
                     <div>
                         <img src="https://img.icons8.com/color/48/000000/whatsapp--v1.png" alt="whatsapp"/>
                         <span class="text-success">&</span>
@@ -103,14 +103,14 @@ AppAsset::register($this);
                     <a href="https://iwtsp.com/966505931313" class="font-15 mt-3 d-block"
                        target="_blank">+966-505931313</a>
                 </div>
-                <div class="col-3 ml-3 mr-3 rounded text-center bg-light">
+                <div class="col-lg-3 mb-3 ml-3 mr-3 rounded text-center bg-light">
                     <h1 class="font-din">موقـعـــنا</h1>
                     <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d28824.67751926832!2d49.5743!3d25.435432!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xafd20fdf3924c980!2z2KfZhNiz2K_YsdipINin2YTYudmC2KfYsdmK2Kk!5e0!3m2!1sar!2ssa!4v1651273757551!5m2!1sar!2ssa"
                             height="200" style="border:0; width: 100%" allowfullscreen="" loading="lazy"
                             referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
-                <div class="col-3 p-3 rounded text-center bg-light">
-                    <h1 class="font-din mt-5">تقيــيم العقــار</h1>
+                <div class="col-lg-3 mb-3 p-3 rounded text-center bg-light">
+                    <h1 class="font-din mt-lg-4">تقيــيم العقــار</h1>
                     <div>
                         <img src="https://img.icons8.com/color/48/000000/whatsapp--v1.png" alt="whatsapp"/>
                         <span class="text-success">&</span>

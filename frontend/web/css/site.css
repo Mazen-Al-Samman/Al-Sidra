@@ -144,8 +144,8 @@ a.desc:after {
 
 .services-section {
     background-image: url(../img/services-section.png);
-    height: 500px;
     background-attachment: fixed;
+    padding-bottom: 20px;
     background-size: contain;
 }
 
@@ -216,4 +216,8 @@ a.desc:after {
 .body-text {
     color: #808080;
     line-height: 25px;
+}
+
+input[type='text'], input[type='number'] {
+    text-align: center;
 }

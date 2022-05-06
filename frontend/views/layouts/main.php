@@ -10,7 +10,6 @@ use yii\bootstrap4\Html;
 use yii\web\View;
 
 AppAsset::register($this);
-$this->registerCssFile("https://fonts.gstatic.com", ['position' => View::POS_HEAD]);
 $this->registerCssFile("https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700&display=swap", ['position' => View::POS_HEAD]);
 $this->registerJsFile('https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js', ['position' => View::POS_HEAD]);
 $this->registerJs('!function(o,c){var n=c.documentElement,t=" w-mod-";n.className+=t+"js",("ontouchstart"in o||o.DocumentTouch&&c instanceof DocumentTouch)&&(n.className+=t+"touch")}(window,document);');

@@ -74,8 +74,9 @@ if (Yii::$app->member->isGuest) {
         ]]);
 }
 ?>
+
 <!-- Main Nav With Logo -->
-<div class="container-fluid d-block mb-5">
+<div class="container-fluid d-block text-center">
     <div class="navbar-sidra ml-2 mr-2" dir="rtl">
         <div class="row">
             <div class="col-lg-2 col-sm-12 p-3">
@@ -86,24 +87,18 @@ if (Yii::$app->member->isGuest) {
     </div>
 </div>
 
-<!-- Clear will add a space between the top header and other contents -->
-<div class="clear"></div>
-
-<div class="container" dir="rtl">
+<div class="container mt-4" dir="rtl">
     <div class="row content-center" style="margin-top: 10px; align-items: center">
         <?php
         foreach ($navBarItems as $navBarItem) : ?>
             <?php if (!$navBarItem['guest'] && Yii::$app->member->isGuest) continue; ?>
-            <div class="col-lg-2 col-sm-12 text-center">
+            <div class="col-lg-2 mt-3 position-relative col-sm-12 text-center">
                 <?php if (empty($navBarItem['items'])) : ?>
                     <?= Html::a($navBarItem['label'], $navBarItem['url'], ['class' => ($currentKey == $navBarItem['key'] ? 'btn main-bg w-100' : 'href-link mt-2 text-dark')]) ?>
                 <?php else: ?>
                     <div data-hover="true" class="w-dropdown">
                         <div class="dropdown-toggle-2 w-dropdown-toggle">
-                            <div class="icon"></div>
-                            <div class="text-block-12"><?= $navBarItem['label'] ?> <img class="mr-2"
-                                                                                        src="https://img.icons8.com/ios/15/000000/expand-arrow--v2.png"
-                                                                                        alt="Expand Arrow"/></div>
+                            <?= $navBarItem['label'] ?>
                         </div>
                         <nav class="w-dropdown-list">
                             <?php foreach ($navBarItem['items'] as $item) : ?>
@@ -116,6 +111,7 @@ if (Yii::$app->member->isGuest) {
             </div>
         <?php endforeach; ?>
     </div>
+    <hr class="mt-5 w-75 d-lg-none">
 </div>
 
 <div style="margin: 50px"></div>

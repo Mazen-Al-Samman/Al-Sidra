@@ -1260,10 +1260,10 @@ textarea.w-select {
     position: absolute;
     background: #DEDEDE;
     display: none;
-    min-width: 150px;
-    margin-right: 30px;
+    width: 100%;
     border-radius: 5px;
     padding: 5px;
+    margin-top: 4px;
 }
 
 .w-dropdown-list.w--open {

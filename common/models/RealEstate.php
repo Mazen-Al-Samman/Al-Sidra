@@ -36,7 +36,7 @@ class RealEstate extends BaseModel
     public function rules()
     {
         return [
-            [['member_id'], 'default', 'value' => Yii::$app->user->id],
+            [['member_id'], 'default', 'value' => Yii::$app->member->id],
             [['contract_type', 'real_estate_type', 'address', 'city', 'neighborhood', 'street', 'num_of_interfaces', 'num_of_streets', 'price', 'area', 'customer_name', 'notes', 'phone'], 'required',
                 'message' => 'لا يمكن ترك حقل {attribute} فارغًـا'
             ],

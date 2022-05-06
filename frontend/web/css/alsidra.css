@@ -757,19 +757,13 @@
 }
 
 .navbar-sidra {
-    left: 2px;
-    top: 23px;
-    margin-top: -40px;
-    margin-bottom: -44px;
-    margin-left: -449px;
-    padding-top: 39px;
-    border-radius: 0px;
+    margin-top: 2.5rem !important;
+    padding: 0 15px;
     background-color: #FAFAFA;
     background-image: url(../img/services-section.png);
     background-position: 50% 15%;
     background-size: cover;
     background-repeat: repeat-y;
-    background-attachment: fixed;
     opacity: 1;
     color: #1b524d;
     background-clip: padding-box;
@@ -796,17 +790,6 @@
 
 .tabs-3 {
     color: #dffaeb;
-}
-
-.dropdown-toggle-2 {
-    left: -24px;
-    top: -11px;
-    margin-top: 9px;
-    margin-bottom: 0px;
-    padding-bottom: 0px;
-    border: 1px none #000;
-    border-radius: 0px;
-    background-color: transparent;
 }
 
 .dropdown-toggle-3 {
@@ -923,7 +906,6 @@
 .text-block-12 {
     position: relative;
     bottom: -4px;
-    padding-left: 7px;
 }
 
 .div-block-2 {
@@ -3244,16 +3226,6 @@
         left: 278px;
         top: 74px;
         margin-left: -149px;
-    }
-
-    .navbar-sidra {
-        left: -128px;
-        margin-top: -53px;
-        margin-right: -4px;
-        margin-left: -47px;
-        padding-top: 0px;
-        padding-right: 130px;
-        padding-left: 0px;
     }
 
     .container-3 {

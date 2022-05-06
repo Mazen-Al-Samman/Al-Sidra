@@ -15,10 +15,10 @@ $phoneUrl .= $model->phone;
 ?>
 <div class="container">
     <div class="row content-center">
-        <div class="col-12 text-center">
+        <div class="col-lg-12 text-center">
             <img src="<?= $model->getImagePath() ?>" class="img-fluid" width="150" alt="<?= $model->main_text ?>">
         </div>
-        <div class="col-6 text-center mt-3">
+        <div class="col-lg-6 text-center mt-3">
             <h3 class="font-weight-bold text-dark-blue"><?= $model->main_text ?></h3>
             <p><?= $model->body ?></p>
 

@@ -22,7 +22,7 @@ use yii\helpers\Html;
             ]) ?>
 
             <div class="row content-center color-sky">
-                <div class="col-3">
+                <div class="col-lg-3">
                     <?= $form->field($model, 'contract_type')->widget(Select2::classname(), [
                         'data' => ArrayHelper::map([['id' => '1', 'value' => 'للبيــع'], ['id' => '2', 'value' => 'للإيجــار']], 'value', 'value'),
                         'theme' => Select2::THEME_KRAJEE_BS5,
@@ -31,7 +31,7 @@ use yii\helpers\Html;
                     ]); ?>
                 </div>
 
-                <div class="col-3">
+                <div class="col-lg-3">
                     <?= $form->field($model, 'real_estate_type')->widget(Select2::classname(), [
                         'data' => ArrayHelper::map(RealEstateTypes::getAll(), 'label', 'label'),
                         'theme' => Select2::THEME_KRAJEE_BS5,
@@ -40,60 +40,60 @@ use yii\helpers\Html;
                     ]); ?>
                 </div>
 
-                <div class="col-3">
+                <div class="col-lg-3">
                     <?= $form->field($model, 'address')->textInput(['class' => 'form-control']) ?>
                 </div>
             </div>
 
             <div class="row content-center color-sky">
-                <div class="col-3">
+                <div class="col-lg-3">
                     <?= $form->field($model, 'city')->textInput(['class' => 'form-control']) ?>
                 </div>
 
-                <div class="col-3">
+                <div class="col-lg-3">
                     <?= $form->field($model, 'neighborhood')->textInput(['class' => 'form-control']) ?>
                 </div>
 
-                <div class="col-3">
+                <div class="col-lg-3">
                     <?= $form->field($model, 'street')->textInput(['class' => 'form-control']) ?>
                 </div>
             </div>
 
             <div class="row content-center color-sky">
-                <div class="col-3">
+                <div class="col-lg-3">
                     <?= $form->field($model, 'num_of_interfaces')->textInput(['class' => 'form-control']) ?>
                 </div>
 
-                <div class="col-3">
+                <div class="col-lg-3">
                     <?= $form->field($model, 'num_of_streets')->textInput(['class' => 'form-control']) ?>
                 </div>
 
-                <div class="col-3">
+                <div class="col-lg-3">
                     <?= $form->field($model, 'price')->textInput(['class' => 'form-control']) ?>
                 </div>
             </div>
 
             <div class="row content-center color-sky">
-                <div class="col-3">
+                <div class="col-lg-3">
                     <?= $form->field($model, 'area')->textInput(['class' => 'form-control']) ?>
                 </div>
 
-                <div class="col-3">
+                <div class="col-lg-3">
                     <?= $form->field($model, 'customer_name')->textInput(['class' => 'form-control']) ?>
                 </div>
 
-                <div class="col-3">
+                <div class="col-lg-3">
                     <?= $form->field($model, 'phone')->textInput(['class' => 'form-control']) ?>
                 </div>
             </div>
 
             <div class="row content-center mt-3 color-sky">
-                <div class="col-6">
+                <div class="col-lg-6">
                     <?= $form->field($model, 'notes')->textarea(['class' => 'form-control w-100', 'style' => 'height: 150px;']) ?>
                 </div>
             </div>
 
-            <?= Html::submitButton('أرســل', ['class' => 'btn bg-dark-blue w-10 text-light font-weight-bold mt-3']) ?>
+            <?= Html::submitButton('أرســل', ['class' => 'btn bg-dark-blue text-light font-weight-bold mt-3']) ?>
 
             <?php ActiveForm::end(); ?>
         </div>
