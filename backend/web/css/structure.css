@@ -253,9 +253,8 @@ code {
 }
 
 .navbar .theme-brand li.theme-logo img {
-    width: 34px;
-    height: 34px;
-    border-radius: 5px;
+    height: 40px;
+    border-radius: 1px;
 }
 
 .navbar .theme-brand li.theme-text {

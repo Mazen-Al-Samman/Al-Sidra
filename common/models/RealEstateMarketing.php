@@ -22,6 +22,8 @@ use Yii;
  */
 class RealEstateMarketing extends BaseModel
 {
+    public $type = 'نموذج تسويق عقاري';
+
     /**
      * {@inheritdoc}
      */
@@ -61,8 +63,6 @@ class RealEstateMarketing extends BaseModel
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'member_id' => 'Member ID',
             'customer_name' => 'الاسـم',
             'email' => 'البـريـد الإلكتروني',
             'phone' => 'رقـم الجـوال',
@@ -70,9 +70,29 @@ class RealEstateMarketing extends BaseModel
             'real_estate_type' => 'نـوع العقـار',
             'report_img' => 'صـورة الصـك',
             'real_estate_img' => 'صـورة العقـار',
-            'status' => 'Status',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
+            'status' => 'حالـة الطلب',
+            'created_at' => 'تاريخ تقديم الطلب',
+        ];
+    }
+
+    public function getImgPath($attribute)
+    {
+        if (empty($this->{$attribute})) $this->{$attribute} = "default.svg";
+        return Yii::$app->params['filesUrl'] . $this->{$attribute};
+    }
+
+    public function fields()
+    {
+        return [
+            'customer_name',
+            'email',
+            'phone',
+            'real_estate_location',
+            'real_estate_type',
+            'status',
+            'report_img',
+            'real_estate_img',
+            'created_at',
         ];
     }
 }

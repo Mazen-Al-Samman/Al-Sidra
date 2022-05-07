@@ -25,6 +25,7 @@ use Yii;
  */
 class RealEstate extends BaseModel
 {
+    public $type = 'نموذج إضـافة عقـار';
     public static function tableName()
     {
         return 'real_estate';
@@ -76,6 +77,25 @@ class RealEstate extends BaseModel
             'phone' => 'رقــم الهاتــف',
             'customer_name' => 'اســم صاحـب العقــار',
             'notes' => 'ملاحظـــات',
+        ];
+    }
+
+    public function fields()
+    {
+        return [
+            'contract_type',
+            'real_estate_type',
+            'address',
+            'city',
+            'neighborhood',
+            'street',
+            'num_of_interfaces',
+            'num_of_streets',
+            'price',
+            'area',
+            'phone',
+            'customer_name',
+            'notes',
         ];
     }
 }

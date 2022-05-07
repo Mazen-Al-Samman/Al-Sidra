@@ -1,5 +1,8 @@
 $("#document").ready(function () {
     App.init();
+    $("[data-main-id='" + main_list_id + "']").addClass('show');
+    $("[data-href-id='" + main_list_id + "']").attr("data-active", true);
+    $("[data-sub-id='" + sub_list_id + "']").addClass('active');
 });
 
 $('[data-modal]').on('click', function () {

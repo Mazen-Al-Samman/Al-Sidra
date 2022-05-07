@@ -18,6 +18,8 @@ AppAsset::register($this);
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <?php
         $this->registerCsrfMetaTags();
+        $this->registerJsVar('main_list_id', Yii::$app->controller->id, View::POS_BEGIN);
+        $this->registerJsVar('sub_list_id', Yii::$app->controller->action->id, View::POS_BEGIN);
         $this->registerCssFile("https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700&display=swap", ['position' => View::POS_HEAD]);
         ?>
         <main role="main" class="flex-shrink-0">

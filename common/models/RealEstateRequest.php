@@ -19,6 +19,7 @@ use Yii;
  */
 class RealEstateRequest extends BaseModel
 {
+    public $type = "نموذج طلب عقـار";
     /**
      * {@inheritdoc}
      */
@@ -67,7 +68,21 @@ class RealEstateRequest extends BaseModel
             'customer_name' => 'الاســم',
             'email' => 'البريــد الإلكتـروني',
             'phone' => 'رقـم الهاتــف',
-            'message' => 'نص الرســالة'
+            'message' => 'نص الرســالة',
+            'created_at' => 'تاريخ تقديم الطلب',
+            'status' => 'حالـة الطلب'
+        ];
+    }
+
+    public function fields()
+    {
+        return [
+            'customer_name',
+            'phone',
+            'email',
+            'message',
+            'status',
+            'created_at'
         ];
     }
 }

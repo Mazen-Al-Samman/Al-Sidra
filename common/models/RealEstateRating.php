@@ -21,6 +21,7 @@ use Yii;
  */
 class RealEstateRating extends BaseModel
 {
+    public $type = 'نموذج تقييم عقـاري';
     /**
      * {@inheritdoc}
      */
@@ -66,6 +67,22 @@ class RealEstateRating extends BaseModel
             'reporter_name' => 'اسم طـالب التقـرير',
             'real_estate_location' => 'مـوقــع العقــار',
             'reason' => 'الغـرض من التقيــيم',
+            'status' => 'حالـة الطلب',
+            'created_at' => 'تاريخ تقديم الطلب',
+        ];
+    }
+
+    public function fields()
+    {
+        return [
+            'customer_name',
+            'phone',
+            'real_estate_type',
+            'reporter_name',
+            'real_estate_location',
+            'reason',
+            'status',
+            'created_at',
         ];
     }
 }
