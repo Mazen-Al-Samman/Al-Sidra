@@ -12,7 +12,7 @@ class Utilities
      */
     public static function uploadImage($uploadFile, $path = '') {
         if(!empty($uploadFile)) {
-            $imgName = 'logo_' . Yii::$app->security->generateRandomString(10) . "." . $uploadFile->extension;
+            $imgName = 'img_' . Yii::$app->security->generateRandomString(10) . "." . $uploadFile->extension;
             $imgName = str_replace(" ","-",$imgName);
             $uploadFile->saveAs(Yii::getAlias('@uploads') . '/' . $path . $imgName);
             return $imgName;
