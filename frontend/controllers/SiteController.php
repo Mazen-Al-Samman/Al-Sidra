@@ -96,6 +96,7 @@ class SiteController extends Controller
         if (!Yii::$app->member->isGuest) return $this->goHome();
 
         $model = new Member();
+        $model->scenario = 'login';
         if (Yii::$app->request->isPost && $model->load(Yii::$app->request->post())) {
             $loggedInModel = $model->getMember();
             if (!empty($loggedInModel)) {

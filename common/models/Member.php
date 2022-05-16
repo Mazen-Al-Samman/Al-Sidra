@@ -62,7 +62,7 @@ class Member extends ActiveRecord implements IdentityInterface
             ['password', 'filter', 'filter' => function ($value) {
                 return Yii::$app->security->generatePasswordHash($value);
             }],
-            ['password', 'validateMember'],
+            ['password', 'validateMember', 'on' => 'login'],
             [['status'], 'integer'],
             [['status'], 'default', 'value' => Constant::STATUS_ACTIVE],
             [['created_at', 'updated_at'], 'safe'],
