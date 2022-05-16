@@ -1,19 +1,23 @@
 <?php
 
+use common\models\BannerImage;
 use frontend\assets\AppAsset;
 
+$bannerImages = BannerImage::find()->all();
 AppAsset::register($this);
 ?>
 <div class="container-fluid">
     <div class="row content-center">
         <div class="col-10">
-            <div data-delay="2000" data-animation="cross" class="w-slider" data-autoplay="true" data-easing="ease"
+            <div data-delay="5000" data-animation="cross" class="w-slider" data-autoplay="true" data-easing="ease"
                  data-hide-arrows="true" data-disable-swipe="false" data-autoplay-limit="0" data-nav-spacing="3"
                  data-duration="500" data-infinite="true">
 
                 <div class="w-slider-mask">
-                    <div class="w-slide"
-                         style="background-image: url('<?= Yii::getAlias('@img') . '/تصميم-بدون-عنوان-8.png' ?>'); background-size: cover"></div>
+                    <?php foreach ($bannerImages as $img): ?>
+                        <div class="w-slide"
+                             style="background-image: url('<?= Yii::$app->params['filesUrl'] . $img->img_name ?>'); background-size: cover"></div>
+                    <?php endforeach; ?>
                 </div>
                 <div class="w-slider-arrow-left">
                     <div class="w-icon-slider-left"></div>

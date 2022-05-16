@@ -26,7 +26,7 @@ class BannerImage extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['img_name'], 'required'],
+            [['img_name'], 'required', 'message' => "لا يمكن ترك {attribute} فارغة"],
             [['img_name'], 'string', 'max' => 255],
         ];
     }

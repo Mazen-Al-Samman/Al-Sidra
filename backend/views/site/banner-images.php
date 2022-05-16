@@ -36,9 +36,19 @@ use yii\helpers\Url;
                                 'attribute' => 'img_name',
                                 'format' => 'html',
                                 'value' => function ($model) {
-                                    return Html::img(Yii::getAlias(Yii::$app->params['filesUrl'] . $model->img_name), ['width' => '200']);
+                                    return Html::img(Yii::getAlias(Yii::$app->params['filesUrl'] . $model->img_name), ['width' => '200', 'class' => 'img-preview']);
                                 }
-                            ]
+                            ],
+                            [
+                                'class' => 'yii\grid\ActionColumn',
+                                'header' => '<span class="text-dark">الإعدادات</span>',
+                                'template' => '{edit} {delete}',
+                                'buttons' => [
+                                    'delete' => function ($url, $model) {
+                                        return Html::button('حذف', ['class' => 'btn btn-danger font-weight-bold', 'data-role' => 'delete', 'data-url' => Url::to(['site/delete-banner', 'id' => $model->id])]);
+                                    },
+                                ],
+                            ],
                         ]
                     ]); ?>
                 </div>

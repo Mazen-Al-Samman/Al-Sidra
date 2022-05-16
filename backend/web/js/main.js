@@ -71,3 +71,16 @@ $("body").on('click', '.delete-icon', function () {
         li.remove();
     });
 });
+
+$('.img-preview').on('click', function () {
+    let imgSrc = $(this).attr('src');
+    swal({
+        imageUrl: imgSrc,
+        animation: false,
+        padding: '20',
+        height: 500,
+        width: 1500,
+        confirmButtonText: 'موافق',
+        confirmButtonClass: 'font-weight-bold btn-info',
+    })
+});

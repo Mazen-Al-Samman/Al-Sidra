@@ -89,6 +89,11 @@ class SiteController extends AccessController
         return $this->renderAjax("new-banner-img", ['model' => $model]);
     }
 
+    public function actionDeleteBanner($id) {
+        BannerImage::deleteAll(['id' => $id]);
+        return true;
+    }
+
     public function actionLandingPages()
     {
         $dataProvider = new ActiveDataProvider([
