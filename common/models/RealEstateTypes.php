@@ -31,11 +31,10 @@ class RealEstateTypes extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'slug'], 'required'],
+            [['title', 'slug'], 'required', 'message' => "لا يمكن ترك حقل {attribute} فارغًـا."],
             [['created_at'], 'safe'],
             [['title', 'slug'], 'string', 'max' => 255],
-            [['title'], 'unique'],
-            [['slug'], 'unique'],
+            [['title', 'slug'], 'unique', 'message' => "العنوان الخاص بحقل {attribute} مكرر."],
         ];
     }
 

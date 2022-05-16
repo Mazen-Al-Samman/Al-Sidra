@@ -30,7 +30,7 @@ $attributeLabels = $model->attributeLabels();
                                         break;
                                     case 'report_img':
                                     case 'real_estate_img':
-                                        $value = Html::img($model->getImgPath($attribute), ['class' => 'img-fluid', 'width' => 250]);
+                                        $value = Html::img($model->getImgPath($attribute), ['class' => 'img-fluid img-preview', 'width' => 250]);
                                         break;
                                     case 'created_at':
                                     case 'updated_at':
