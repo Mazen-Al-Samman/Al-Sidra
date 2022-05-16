@@ -10,6 +10,7 @@ $translations = [
     'site-real-estate-config' => 'أنــواع العـقـارات',
     'real-estate-request' => 'نموذج طلب عقار',
     'real-estate-view' => 'بيانات النموذج',
+    'real-estate-banners' => 'صور الصفحة الرئيسية'
 ];
 
 ?>
@@ -126,6 +127,9 @@ $translations = [
                         </li>
                         <li data-sub-id="real-estate">
                             <a href="<?= Url::to(['site/real-estate']) ?>">أنواع العقــارات</a>
+                        </li>
+                        <li data-sub-id="banners">
+                            <a href="<?= Url::to(['site/banners']) ?>">صور الصفحة الرئيسية</a>
                         </li>
                     </ul>
                 </li>

@@ -3,6 +3,7 @@
 namespace backend\controllers;
 
 use common\helpers\Utilities;
+use common\models\BannerImage;
 use common\models\Landing;
 use common\models\LoginForm;
 use common\models\RealEstateItem;
@@ -63,6 +64,29 @@ class SiteController extends AccessController
     {
         Yii::$app->user->logout();
         return $this->goHome();
+    }
+
+    public function actionBanners() {
+        $dataProvider = new ActiveDataProvider([
+            'query' => BannerImage::find()
+        ]);
+        return $this->render('banner-images', ['dataProvider' => $dataProvider]);
+    }
+
+    /**
+     * @throws Exception
+     */
+    public function actionAddBannerImg() {
+        $model = new BannerImage();
+        if (Yii::$app->request->isPost) {
+            $img = Utilities::uploadImage(UploadedFile::getInstance($model, 'img_name'));
+            $model->img_name = $img;
+            if (!$model->save()) {
+                Yii::$app->session->setFlash('error', 'حدث خطأ ما .. يرجى المحاولة لاحقًــا!');
+            }
+            return $this->redirect(['site/banners']);
+        }
+        return $this->renderAjax("new-banner-img", ['model' => $model]);
     }
 
     public function actionLandingPages()
