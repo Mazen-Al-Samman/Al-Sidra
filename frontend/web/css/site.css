@@ -221,3 +221,39 @@ a.desc:after {
 input[type='text'], input[type='number'] {
     text-align: center;
 }
+
+#container {
+    width: 600px;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#container > p {
+    font-size: 30px;
+    font-family: monospace;
+    letter-spacing: 1px;
+}
+.line {
+    fill: none;
+    stroke: white;
+    stroke-width: 12;
+    stroke-dasharray: 200 100;
+}
+
+.anim {
+    -webkit-animation: swirls 2s linear infinite;
+    -moz-animation: swirls 2s linear infinite;
+    -o-animation: swirls 2s linear infinite;
+    animation: swirls 2s linear infinite;
+}
+
+@keyframes swirls {
+    from {
+        stroke-dashoffset: 0;
+    }
+    to {
+        stroke-dashoffset: 300;
+    }
+}

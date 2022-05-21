@@ -111,6 +111,10 @@ class SiteController extends Controller
         ]);
     }
 
+    public function actionContactUs() {
+        return $this->render('about-us');
+    }
+
     /**
      * @return Response
      */

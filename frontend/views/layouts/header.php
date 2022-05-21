@@ -49,9 +49,9 @@ $navBarItems = [
     ],
     [
         'label' => 'تـواصل معنــا',
-        'key' => 'contact-us',
+        'key' => 'site-contact-us',
         'items' => [],
-        'url' => Url::to(['site/index']),
+        'url' => Url::to(['site/contact-us']),
         'guest' => true
     ],
 ];

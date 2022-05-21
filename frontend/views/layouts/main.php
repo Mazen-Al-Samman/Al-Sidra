@@ -16,6 +16,7 @@ $this->registerJs('!function(o,c){var n=c.documentElement,t=" w-mod-";n.classNam
 $this->registerJsFile('https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=623c47907413d05dab48f209', ['position' => View::POS_END]);
 $this->registerJsFile('https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js', ['position' => View::POS_END]);
 
+$actionName = Yii::$app->controller->action->id;
 if (!empty(Yii::$app->session->allFlashes)) :
     $flashes = Yii::$app->session->allFlashes;
     foreach ($flashes as $type => $msg) :
@@ -44,11 +45,12 @@ endif;
         <title><?= Html::encode($this->title) ?></title>
         <?php $this->head() ?>
     </head>
-    <body class="body-4" style="font-family: 'Cairo', serif; font-weight: bold">
+    <body class="body-4"
+          style="font-family: 'Cairo', serif; font-weight: bold; <?= $actionName == 'error' ? 'background-image: linear-gradient(to right, #c94b4b, #4b134f)' : '' ?>">
     <?php $this->beginBody() ?>
-    <?= $this->render('header') ?>
+    <?= $actionName != 'error' ? $this->render('header') : '' ?>
     <?= $content ?>
-    <?= !in_array(Yii::$app->controller->action->id, ['login', 'signup']) ? $this->render('footer') : '' ?>
+    <?= !in_array(Yii::$app->controller->action->id, ['login', 'signup', 'error']) ? $this->render('footer') : '' ?>
     <?php $this->endBody() ?>
     </body>
     </html>
