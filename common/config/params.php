@@ -6,5 +6,5 @@ return [
     'senderName' => 'Example.com mailer',
     'user.passwordResetTokenExpire' => 3600,
     'user.passwordMinLength' => 8,
-    'filesUrl' => 'http://alsidra-files.local/'
+    'filesUrl' => 'https://sidra-media.tech-inspire.com/'
 ];
