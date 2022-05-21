@@ -54,6 +54,13 @@ $navBarItems = [
         'url' => Url::to(['site/contact-us']),
         'guest' => true
     ],
+    [
+        'label' => 'تسجيل الخروج',
+        'key' => '',
+        'items' => [],
+        'url' => Url::to(['site/logout']),
+        'guest' => false
+    ],
 ];
 
 if (Yii::$app->member->isGuest) {
@@ -87,12 +94,12 @@ if (Yii::$app->member->isGuest) {
     </div>
 </div>
 
-<div class="container mt-4" dir="rtl">
+<div class="container-fluid mt-4" dir="rtl">
     <div class="row content-center" style="margin-top: 10px; align-items: center">
         <?php
         foreach ($navBarItems as $navBarItem) : ?>
             <?php if (!$navBarItem['guest'] && Yii::$app->member->isGuest) continue; ?>
-            <div class="col-lg-2 mt-3 position-relative col-sm-12 text-center">
+            <div class="col-lg-1 mt-3 position-relative col-sm-12 text-center">
                 <?php if (empty($navBarItem['items'])) : ?>
                     <?= Html::a($navBarItem['label'], $navBarItem['url'], ['class' => ($currentKey == $navBarItem['key'] ? 'btn main-bg w-100' : 'href-link mt-2 text-dark')]) ?>
                 <?php else: ?>

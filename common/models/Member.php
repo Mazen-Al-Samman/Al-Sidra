@@ -52,7 +52,7 @@ class Member extends ActiveRecord implements IdentityInterface
                 'message' => '{attribute} يجب أن يتكون نصّـًًا',
                 'tooLong' => '255 يجب أن يكون عدد حروف {attribute} كحد أعلى ',
             ],
-            ['email', 'unique', 'targetClass' => '\common\models\User', 'message' => "{attribute} محجوز من مستخدم اخر"],
+            ['email', 'unique', 'targetClass' => '\common\models\Member', 'message' => "{attribute} محجوز من مستخدم اخر"],
 
             ['password', 'string', 'min' => Yii::$app->params['user.passwordMinLength'],
                 'message' => '{attribute} يجب أن يتكون نصّـًًا',
