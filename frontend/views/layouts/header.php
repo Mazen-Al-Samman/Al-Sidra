@@ -23,7 +23,7 @@ $navBarItems = [
             ['label' => "طلب عقــار", 'url' => Url::to(['real-estate/request'])],
             ['label' => "إضـافـة عقــار", 'url' => Url::to(['real-estate/add'])],
             ['label' => "التسويق العقاري", 'url' => Url::to(['real-estate/marketing'])],
-            ['label' => "التقييم العقاري", 'url' => Url::to(['real-estate/rating'])],
+            ['label' => "التقييم العقاري", 'url' => Url::to(['real-estate/rate'])],
         ], $landingPages),
         'url' => Url::to(['site/index']),
         'guest' => true
