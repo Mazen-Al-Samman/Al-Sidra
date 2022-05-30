@@ -18,7 +18,7 @@ class AdminController extends Controller
         $user->username = readline("Admin Name : ");
         $user->email = readline("Email Address : ");
         $password = readline("Password : ");
-        $user->password = Yii::$app->security->generatePasswordHash($password);
+        $user->password_hash = Yii::$app->security->generatePasswordHash($password);
         $user->status = User::STATUS_ACTIVE;
         $user->created_at = date('Y-m-d H:i:s');
         $user->auth_key = Yii::$app->security->generateRandomString();

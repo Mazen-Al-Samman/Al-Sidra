@@ -20,7 +20,9 @@ $navBarItems = [
         'label' => 'الــخــدمـــــات',
         'key' => 'site-services',
         'items' => array_merge([
-            ['label' => "التقييم العقاري", 'url' => Url::to(['real-estate/rate'])],
+            ['label' => "طلب عقــار", 'url' => Url::to(['real-estate/request'])],
+            ['label' => "إضـافـة عقــار", 'url' => Url::to(['real-estate/add'])],
+            ['label' => "التسويق العقاري", 'url' => Url::to(['real-estate/marketing'])],
             ['label' => "التسويق العقاري", 'url' => Url::to(['real-estate/marketing'])],
         ], $landingPages),
         'url' => Url::to(['site/index']),
@@ -32,20 +34,6 @@ $navBarItems = [
         'items' => $realEstateTypes,
         'url' => Url::to(['site/index']),
         'guest' => true
-    ],
-    [
-        'label' => 'طلب عقــار',
-        'key' => 'real-estate-request',
-        'items' => [],
-        'url' => Url::to(['real-estate/request']),
-        'guest' => false
-    ],
-    [
-        'label' => 'إضـافـة عقــار',
-        'key' => 'real-estate-add',
-        'items' => [],
-        'url' => Url::to(['real-estate/add']),
-        'guest' => false
     ],
     [
         'label' => 'تـواصل معنــا',
@@ -94,12 +82,12 @@ if (Yii::$app->member->isGuest) {
     </div>
 </div>
 
-<div class="container-fluid mt-4" dir="rtl">
+<div class="container mt-4" dir="rtl">
     <div class="row content-center" style="margin-top: 10px; align-items: center">
         <?php
         foreach ($navBarItems as $navBarItem) : ?>
             <?php if (!$navBarItem['guest'] && Yii::$app->member->isGuest) continue; ?>
-            <div class="col-lg-1 mt-3 position-relative col-sm-12 text-center">
+            <div class="col-lg-2 mt-3 position-relative col-sm-12 text-center">
                 <?php if (empty($navBarItem['items'])) : ?>
                     <?= Html::a($navBarItem['label'], $navBarItem['url'], ['class' => ($currentKey == $navBarItem['key'] ? 'btn main-bg w-100' : 'href-link mt-2 text-dark')]) ?>
                 <?php else: ?>
