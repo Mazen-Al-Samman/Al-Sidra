@@ -44,11 +44,14 @@ use yii\helpers\Url;
                             [
                                 'class' => 'yii\grid\ActionColumn',
                                 'header' => '<span class="text-dark">الإعدادات</span>',
-                                'template' => '{view} {read}',
+                                'template' => '{view} {delete}',
                                 'buttons' => [
                                     'view' => function ($url, $model) {
                                         return Html::a('مشاهدة الطلب', Url::to(['real-estate/view', 'id' => $model->id, 'type' => Yii::$app->controller->action->id]), ['class' => 'btn btn-info font-weight-bold']);
-                                    }
+                                    },
+                                    'delete' => function ($url, $model) {
+                                        return Html::button('حذف', ['class' => 'btn btn-danger font-weight-bold', 'data-role' => 'delete', 'data-url' => Url::to(['real-estate/delete', 'id' => $model->id, 'type' => Yii::$app->controller->action->id])]);
+                                    },
                                 ],
                             ],
                         ],

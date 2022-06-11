@@ -8,6 +8,7 @@ use common\models\RealEstateMarketing;
 use common\models\RealEstateRating;
 use common\models\RealEstateRequest;
 use yii\data\ActiveDataProvider;
+use yii\db\StaleObjectException;
 use yii\web\NotFoundHttpException;
 
 /**
@@ -61,6 +62,15 @@ class RealEstateController extends AccessController
      */
     public function actionRead($id, $type) {
         BaseModel::ReadModel($id, $type);
+        return $this->redirect(["real-estate/{$type}"]);
+    }
+
+    /**
+     * @throws StaleObjectException
+     * @throws NotFoundHttpException
+     */
+    public function actionDelete($id, $type) {
+        BaseModel::deleteModel($id, $type);
         return $this->redirect(["real-estate/{$type}"]);
     }
 }

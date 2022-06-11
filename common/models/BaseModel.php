@@ -3,6 +3,7 @@
 namespace common\models;
 
 use yii\db\ActiveRecord;
+use yii\db\StaleObjectException;
 use yii\web\NotFoundHttpException;
 
 class BaseModel extends ActiveRecord
@@ -57,5 +58,15 @@ class BaseModel extends ActiveRecord
         $model = self::getById($id, $type);
         $model->status = Constant::STATUS_READ;
         return $model->save();
+    }
+
+    /**
+     * @throws StaleObjectException
+     * @throws NotFoundHttpException
+     */
+    public static function deleteModel($id, $type) {
+        $model = self::getById($id, $type);
+        $model->delete();
+        return true;
     }
 }
