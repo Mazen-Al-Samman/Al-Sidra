@@ -22,7 +22,7 @@ use yii\helpers\Url;
                         </div>
                     </div>
                 </div>
-                <div class="widget-content widget-content-area table-responsive-sm">
+                <div class="widget-content widget-content-area table-responsive table-sm">
                     <?= GridView::widget([
                         'dataProvider' => $dataProvider,
                         'headerRowOptions' => ['class' => 'text-center'],
